@@ -1,15 +1,5 @@
 package nl.Steffion.BlockHunt;
-/**
- * Steffion's Engine - Made by Steffion.
- *
- * You're allowed to use this engine for own usage, you're not allowed to
- * republish the engine. Using this for your own plugin is allowed when a
- * credit is placed somewhere in the plugin.
- *
- * Thanks for your cooperate!
- *
- * @author Steffion
- */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +60,17 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BlockHunt extends JavaPlugin implements Listener {
-
+	/**
+	 * Steffion's Engine - Made by Steffion.
+	 *
+	 * You're allowed to use this engine for own usage, you're not allowed to
+	 * republish the engine. Using this for your own plugin is allowed when a
+	 * credit is placed somewhere in the plugin.
+	 *
+	 * Thanks for your cooperate!
+	 *
+	 * @author Steffion
+	 */
 
 	public static PluginDescriptionFile pdfFile;
 	public static BlockHunt plugin;
@@ -182,7 +182,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
 
 		ArenaHandler.loadArenas();
 
-		MessageM.sendFMessage(null, ConfigC.log_enabledPlugin, "name-" + BlockHunt.pdfFile.getName(), "version-" + BlockHunt.pdfFile.getVersion(), "autors-"
+		MessageM.sendFMessage(null, ConfigC.log_enabledPlugin, "name-" + BlockHunt.pdfFile.getName(), "version-" + BlockHunt.pdfFile.getVersion(), "authors-"
 				+ BlockHunt.pdfFile.getAuthors().get(0));
 
 		// Welcome to the massive game loop!!
