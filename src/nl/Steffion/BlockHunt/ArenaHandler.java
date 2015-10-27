@@ -104,7 +104,7 @@ public class ArenaHandler {
 									Bukkit.getPluginManager().callEvent(event);
 
 									PlayerArenaData pad = new PlayerArenaData(player.getLocation(), player.getGameMode(), player.getInventory().getContents(), player
-											.getInventory().getArmorContents(), player.getExp(), player.getLevel(), player.getHealth(), player.getFoodLevel(),
+											.getInventory().getArmorContents(), player.getExp(), player.getLevel(), player.getMaxHealth(), player.getHealth(), player.getFoodLevel(),
 											player.getActivePotionEffects(), player.getAllowFlight());
 
 									W.pData.put(player, pad);
@@ -116,6 +116,7 @@ public class ArenaHandler {
 									}
 									player.setFoodLevel(20);
 									player.setHealth(20);
+                                                                        player.setMaxHealth(20);
 									player.setLevel(arena.timer);
 									player.setExp(0);
 									player.getInventory().clear();
@@ -285,7 +286,7 @@ public class ArenaHandler {
 				}
 			}
 
-			PlayerArenaData pad = new PlayerArenaData(null, null, null, null, null, null, null, null, null, false);
+			PlayerArenaData pad = new PlayerArenaData(null, null, null, null, null, null, null, null, null, null, false);
 
 			if (W.pData.get(player) != null) {
 				pad = W.pData.get(player);
@@ -297,6 +298,7 @@ public class ArenaHandler {
 			player.updateInventory();
 			player.setExp(pad.pEXP);
 			player.setLevel(pad.pEXPL);
+                        player.setMaxHealth(pad.pMaxHealth);
 			player.setHealth(pad.pHealth);
 			player.setFoodLevel(pad.pFood);
 			player.addPotionEffects(pad.pPotionEffects);
