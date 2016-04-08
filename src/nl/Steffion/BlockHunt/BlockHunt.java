@@ -174,11 +174,15 @@ public class BlockHunt extends JavaPlugin implements Listener {
 
 		if (!getServer().getPluginManager().isPluginEnabled("LibsDisguises")) {
 			MessageM.broadcastFMessage(ConfigC.error_libsDisguisesNotInstalled);
+			Bukkit.getServer().getPluginManager().disablePlugin(this);
+			return;
 		}
 
 		if (!getServer().getPluginManager().isPluginEnabled("ProtocolLib")) {
 			MessageM.broadcastFMessage(ConfigC.error_protocolLibNotInstalled);
-		}
+            Bukkit.getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
 
 		ArenaHandler.loadArenas();
 
