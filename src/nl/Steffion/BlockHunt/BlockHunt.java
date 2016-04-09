@@ -208,19 +208,19 @@ public class BlockHunt extends JavaPlugin implements Listener {
 							} else if (arena.timer == 10) {
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_lobbyArenaIsStarting, "1-10");
 							} else if (arena.timer == 5) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 0);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 0);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_lobbyArenaIsStarting, "1-5");
 							} else if (arena.timer == 4) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 0);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 0);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_lobbyArenaIsStarting, "1-4");
 							} else if (arena.timer == 3) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 1);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_lobbyArenaIsStarting, "1-3");
 							} else if (arena.timer == 2) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 1);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_lobbyArenaIsStarting, "1-2");
 							} else if (arena.timer == 1) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 2);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 2);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_lobbyArenaIsStarting, "1-1");
 							}
 						} else {
@@ -305,7 +305,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
 							infBow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
 							player.getInventory().setItem(1, infBow);
 							player.getInventory().setItem(2, new ItemStack(Material.ARROW, 1));
-							player.playSound(player.getLocation(), Sound.ANVIL_USE, 1, 1);
+							player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
 						}
 
 						if (W.seekertime.get(player) != null) {
@@ -357,19 +357,19 @@ public class BlockHunt extends JavaPlugin implements Listener {
 							} else if (arena.timer == 10) {
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameArenaEnd, "1-10");
 							} else if (arena.timer == 5) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 0);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 0);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameArenaEnd, "1-5");
 							} else if (arena.timer == 4) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 0);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 0);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameArenaEnd, "1-4");
 							} else if (arena.timer == 3) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 1);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameArenaEnd, "1-3");
 							} else if (arena.timer == 2) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 1);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameArenaEnd, "1-2");
 							} else if (arena.timer == 1) {
-								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ORB_PICKUP, 1, 2);
+								arena.lobbyWarp.getWorld().playSound(arena.lobbyWarp, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 2);
 								ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameArenaEnd, "1-1");
 							}
 						} else {
@@ -414,7 +414,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
 													}
 
 													block.addUnsafeEnchantment(Enchantment.DURABILITY, 10);
-													player.playSound(pLoc, Sound.ORB_PICKUP, 1, 1);
+													player.playSound(pLoc, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 													W.hiddenLoc.put(player, moveLoc);
 													if (block.getDurability() != 0) {
 														MessageM.sendFMessage(

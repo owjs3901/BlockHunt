@@ -89,7 +89,7 @@ public class OnEntityDamageByEntityEvent implements Listener {
 					}
 
 					// The damage is allowed, so lets handle it!
-					player.getWorld().playSound(player.getLocation(), Sound.HURT_FLESH, 1, 1);
+					player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 1, 1);
 
 					if (event.getDamage() >= player.getHealth()) {
 						player.setHealth(20);

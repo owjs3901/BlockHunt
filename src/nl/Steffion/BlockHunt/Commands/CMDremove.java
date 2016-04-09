@@ -31,7 +31,7 @@ public class CMDremove extends DefaultCMD {
 								LocationSerializable signLoc = new LocationSerializable((Location) W.signs.getFile().get(sign + ".location"));
 								signLoc.getBlock().setType(Material.AIR);
 								signLoc.getWorld().playEffect(signLoc, Effect.MOBSPAWNER_FLAMES, 0);
-								signLoc.getWorld().playSound(signLoc, Sound.ENDERDRAGON_WINGS, 1, 1);
+								signLoc.getWorld().playSound(signLoc, Sound.ENTITY_ENDERDRAGON_FLAP, 1, 1);
 								W.signs.getFile().set(sign, null);
 							}
 						}
