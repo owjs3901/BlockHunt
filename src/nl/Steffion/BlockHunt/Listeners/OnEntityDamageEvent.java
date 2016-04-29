@@ -27,6 +27,7 @@ public class OnEntityDamageEvent implements Listener {
 					DamageCause cause = event.getCause();
 					switch (cause) {
 						case ENTITY_ATTACK:
+						case PROJECTILE:
 							// Do nothing about damage from an entity
 							// Any entity damage that makes it to here was already allowed by the EntityDamageByEntity event
 							break;
