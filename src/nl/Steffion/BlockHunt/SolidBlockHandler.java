@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class SolidBlockHandler {
-	@SuppressWarnings("deprecation")
+
 	public static void makePlayerUnsolid(Player player) {
 		ItemStack block = player.getInventory().getItem(8);
 		if (block == null) {

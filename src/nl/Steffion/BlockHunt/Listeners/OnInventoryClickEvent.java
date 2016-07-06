@@ -54,7 +54,7 @@ public class OnInventoryClickEvent implements Listener {
 				return;
 
 			if (inv.getName().startsWith("\u00A7r")) {
-				if (inv.getName().equals(MessageM.replaceAll((String) "\u00A7r" + W.config.get(ConfigC.shop_title)))) {
+				if (inv.getName().equals(MessageM.replaceAll("\u00A7r" + W.config.get(ConfigC.shop_title)))) {
 					event.setCancelled(true);
 					ItemStack item = event.getCurrentItem();
 					if (W.shop.getFile().get(player.getName() + ".tokens") == null) {
@@ -114,7 +114,7 @@ public class OnInventoryClickEvent implements Listener {
 								if (arena.playersInArena.contains(player)) {
 									for (Player playerCheck : arena.playersInArena) {
 										if (W.choosenSeeker.get(playerCheck) != null) {
-											if (W.choosenSeeker.get(playerCheck) == true) {
+											if (W.choosenSeeker.get(playerCheck)) {
 												i = i + 1;
 											}
 										}
@@ -145,7 +145,7 @@ public class OnInventoryClickEvent implements Listener {
 								if (arena.playersInArena.contains(player)) {
 									for (Player playerCheck : arena.playersInArena) {
 										if (W.choosenSeeker.get(playerCheck) != null) {
-											if (W.choosenSeeker.get(playerCheck) == false) {
+											if (!W.choosenSeeker.get(playerCheck)) {
 												i = i + 1;
 											}
 										}

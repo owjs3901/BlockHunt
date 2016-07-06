@@ -2,11 +2,34 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>nl.Steffion</groupId>
    <artifactId>BlockHunt</artifactId>
-   <version>0.2.1-b${env.BUILD_NUMBER}</version>
+   <version>0.2.1-SNAPSHOT</version>
    <name>BlockHunt</name>
-
+  <properties>
+    <pluginversion>${project.version}-${buildnumber}</pluginversion>
+    <!-- so as to allow local declaration when building locally-->
+    <buildnumber />
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <scm>
+    <connection>scm:git:git@github.com:AddstarMC/Blockhunt.git</connection>
+    <developerConnection>scm:git:git@github.com:AddstarMC/Blockhunt.git</developerConnection>
+    <url>https://github.com/AddstarMC/Blockhunt</url>
+    <tag>master</tag>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>maven.addstar.com.au</id>
+      <name>maven.addstar.com.au-releases</name>
+      <url>http://maven.addstar.com.au/artifactory/ext-release-local</url>
+    </repository>
+    <snapshotRepository>
+      <id>maven.addstar.com.au</id>
+      <name>maven.addstar.com.au-snapshots</name>
+      <url>http://maven.addstar.com.au/artifactory/ext-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
   <repositories>
-    <!-- Addstar repos -->
+    <!-- Addstar repo -->
     <repository>
       <id>addstar-repo</id>
       <url>http://maven.addstar.com.au/artifactory/ext-release-local</url>
@@ -25,12 +48,9 @@
       </releases>
     </repository>
 
-    <!-- For spigot -->
     <repository>
-      <id>md5-repo</id>
-      <url>http://repo.md-5.net/content/groups/public/</url>
-      <releases><enabled>true</enabled></releases>
-      <snapshots><enabled>true</enabled></snapshots>
+      <id>spigot-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/groups/public</url>
     </repository>
 
     <!-- Other repositories -->
@@ -38,21 +58,25 @@
       <id>maven-central</id>
       <url>http://repo1.maven.org/maven2/</url>
     </repository>
+    <!--Lib Disguises-->
+    <repository>
+      <id>md_5-releases</id>
+      <url>http://repo.md-5.net/content/repositories/releases/</url>
+    </repository>
   </repositories>
-
   <dependencies>
-    <!-- Bukkit -->
     <dependency>
-      <groupId>org.bukkit</groupId>
-      <artifactId>bukkit</artifactId>
-      <version>1.9-R0.1-SNAPSHOT</version>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.10-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
     </dependency>
-    
     <!-- LibsDiguises is required for hiding -->
     <dependency>
-      <groupId>me.libraryaddict.disguise</groupId>
+      <groupId>LibsDisguises</groupId>
       <artifactId>LibsDisguises</artifactId>
-      <version>9.0.2</version>
+      <version>9.0.7</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
@@ -75,10 +99,15 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-	  <encoding>ISO-8859-1</encoding>
+          <source>1.8</source>
+          <target>1.8</target>
+	  <encoding>UTF-8</encoding>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.1</version>
       </plugin>
     </plugins>
   </build>

@@ -12,7 +12,7 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public class ScoreboardHandler {
 	public static void createScoreboard(Arena arena) {
-		if ((Boolean) W.config.get(ConfigC.scoreboard_enabled) == true) {
+		if ((Boolean) W.config.get(ConfigC.scoreboard_enabled)) {
 			Scoreboard board = arena.scoreboard;
 			if (board.getObjective(arena.arenaName) != null) {
 				updateScoreboard(arena);
@@ -49,7 +49,7 @@ public class ScoreboardHandler {
 	}
 
 	public static void updateScoreboard(Arena arena) {
-		if ((Boolean) W.config.get(ConfigC.scoreboard_enabled) == true) {
+		if ((Boolean) W.config.get(ConfigC.scoreboard_enabled)) {
 			Scoreboard board = arena.scoreboard;
 			Objective object = board.getObjective(DisplaySlot.SIDEBAR);
 			object.setDisplayName(BlockHunt.cutString(MessageM.replaceAll((String) W.config.get(ConfigC.scoreboard_title)), 32));

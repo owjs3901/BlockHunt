@@ -1,5 +1,15 @@
 package nl.Steffion.BlockHunt.Managers;
-
+/**
+ * Steffion's Engine - Made by Steffion.
+ *
+ * You're allowed to use this engine for own usage, you're not allowed to
+ * republish the engine. Using this for your own plugin is allowed when a
+ * credit is placed somewhere in the plugin.
+ *
+ * Thanks for your cooperate!
+ *
+ * @author Steffion
+ */
 import java.util.List;
 
 import nl.Steffion.BlockHunt.ConfigC;
@@ -8,17 +18,7 @@ import nl.Steffion.BlockHunt.W;
 import nl.Steffion.BlockHunt.Commands.DefaultCMD;
 
 public class CommandM {
-	/**
-	 * Steffion's Engine - Made by Steffion.
-	 * 
-	 * You're allowed to use this engine for own usage, you're not allowed to
-	 * republish the engine. Using this for your own plugin is allowed when a
-	 * credit is placed somewhere in the plugin.
-	 * 
-	 * Thanks for your cooperate!
-	 * 
-	 * @author Steffion
-	 */
+
 
 	public String name;
 	public String label;

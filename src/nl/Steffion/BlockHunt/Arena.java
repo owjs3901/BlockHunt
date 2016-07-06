@@ -98,7 +98,7 @@ public class Arena implements ConfigurationSerializable {
 		hidersTokenWin,
 		seekersTokenWin,
 		killTokens,
-		blockAnnouncerTime;
+		blockAnnouncerTime
 	}
 
 	public enum ArenaState {
@@ -106,12 +106,12 @@ public class Arena implements ConfigurationSerializable {
 		STARTING,
 		INGAME,
 		RESTARTING,
-		DISABLED;
+		DISABLED
 	}
 
 	@Override
 	public Map<String, Object> serialize() {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("arenaName", arenaName);
 		map.put("pos1", pos1);
 		map.put("pos2", pos2);
@@ -147,7 +147,7 @@ public class Arena implements ConfigurationSerializable {
 				(ArrayList<ItemStack>) M.g(map, "disguiseBlocks", new ArrayList<ItemStack>()),(LocationSerializable) M.g(map, "lobbyWarp", loc), (LocationSerializable) M.g(map, "hidersWarp", loc), (LocationSerializable) M.g(map, "seekersWarp", loc),
 				(LocationSerializable) M.g(map, "spawnWarp", loc), (ArrayList<String>) M.g(map, "seekersWinCommands", new ArrayList<String>()),
 				(ArrayList<String>) M.g(map, "hidersWinCommands", new ArrayList<String>()), (ArrayList<String>) M.g(map, "allowedCommands", new ArrayList<String>()),
-				(Integer) M.g(map, "seekersTokenWin", 10), (Integer) M.g(map, "hidersTokenWin", 50), (Integer) M.g(map, "killTokens", 8), new ArrayList<Player>(),
-				ArenaState.WAITING, 0, new ArrayList<Player>(), Bukkit.getScoreboardManager().getNewScoreboard());
+				(Integer) M.g(map, "seekersTokenWin", 10), (Integer) M.g(map, "hidersTokenWin", 50), (Integer) M.g(map, "killTokens", 8), new ArrayList<>(),
+				ArenaState.WAITING, 0, new ArrayList<>(), Bukkit.getScoreboardManager().getNewScoreboard());
 	}
 }

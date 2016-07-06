@@ -1,5 +1,15 @@
 package nl.Steffion.BlockHunt.Managers;
-
+/**
+ * Steffion's Engine - Made by Steffion.
+ *
+ * You're allowed to use this engine for own usage, you're not allowed to
+ * republish the engine. Using this for your own plugin is allowed when a
+ * credit is placed somewhere in the plugin.
+ *
+ * Thanks for your cooperate!
+ *
+ * @author Steffion
+ */
 import java.io.File;
 
 import nl.Steffion.BlockHunt.BlockHunt;
@@ -11,17 +21,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class ConfigM {
-	/**
-	 * Steffion's Engine - Made by Steffion.
-	 * 
-	 * You're allowed to use this engine for own usage, you're not allowed to
-	 * republish the engine. Using this for your own plugin is allowed when a
-	 * credit is placed somewhere in the plugin.
-	 * 
-	 * Thanks for your cooperate!
-	 * 
-	 * @author Steffion
-	 */
+
 
 	String fileName;
 	File file;
@@ -145,7 +145,7 @@ public class ConfigM {
 	 * 
 	 * @param location
 	 *            Config location.
-	 * @return
+	 * @return Object
 	 */
 	public Object get(ConfigC location) {
 		return this.getFile().get(location.location);

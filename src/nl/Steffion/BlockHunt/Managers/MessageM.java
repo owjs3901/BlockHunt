@@ -110,7 +110,7 @@ public class MessageM {
 	 * @param vars
 	 *            Variables. Seperated with a - . Ex: "playerName-" +
 	 *            player.getName();
-	 * @return
+	 * @return String with the message with values replaced
 	 */
 	public static String replaceAll(String message, String... vars) {
 		return MessageM.replaceColours(MessageM.replaceColourVars(MessageM.replaceVars(message, vars)));
@@ -185,7 +185,7 @@ public class MessageM {
 		}
 
 		public static String TAG() {
-			return (String) W.config.get(ConfigC.chat_header) + (String) W.config.get(ConfigC.chat_tag) + (String) W.config.get(ConfigC.chat_normal);
+			return W.config.get(ConfigC.chat_header) + W.config.get(ConfigC.chat_tag) + W.config.get(ConfigC.chat_normal);
 		}
 	}
 }

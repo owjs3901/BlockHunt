@@ -24,7 +24,7 @@ public class CMDwand extends DefaultCMD {
 			im.setDisplayName(MessageM.replaceAll((String) W.config.get(ConfigC.wandName)));
 			W.config.load();
 			List<String> lores = W.config.getFile().getStringList(ConfigC.wandDescription.location);
-			List<String> lores2 = new ArrayList<String>();
+			List<String> lores2 = new ArrayList<>();
 			for (String lore : lores) {
 				lores2.add(MessageM.replaceAll(lore));
 			}

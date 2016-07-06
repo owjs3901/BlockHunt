@@ -189,7 +189,7 @@ public class InventoryHandler {
 		ItemStack arenaNameNote = new ItemStack(Material.PAPER, 1);
 		ItemMeta arenaNameNote_IM = arenaNameNote.getItemMeta();
 		arenaNameNote_IM.setDisplayName(MessageM.replaceAll("%NDisguiseBlocks of arena: %A" + arenaname));
-		ArrayList<String> lores = new ArrayList<String>();
+		ArrayList<String> lores = new ArrayList<>();
 		lores.add(MessageM.replaceAll("%NPlace the DisguiseBlocks inside this inventory."));
 		arenaNameNote_IM.setLore(lores);
 		arenaNameNote.setItemMeta(arenaNameNote_IM);
@@ -209,8 +209,8 @@ public class InventoryHandler {
 			W.shop.save();
 		}
 		int playerTokens = W.shop.getFile().getInt(player.getName() + ".tokens");
-		List<String> lores = new ArrayList<String>();
-		List<String> lores2 = new ArrayList<String>();
+		List<String> lores = new ArrayList<>();
+		List<String> lores2 = new ArrayList<>();
 
 		ItemStack shopTokens = new ItemStack(Material.EMERALD, 1);
 		ItemMeta shopTokens_IM = shopTokens.getItemMeta();
@@ -221,7 +221,7 @@ public class InventoryHandler {
 		ItemMeta shopBlockChooser_IM = shopBlockChooser.getItemMeta();
 		shopBlockChooser_IM.setDisplayName(MessageM.replaceAll((String) W.config.get(ConfigC.shop_blockChooserv1Name)));
 		lores = W.config.getFile().getStringList(ConfigC.shop_blockChooserv1Description.location);
-		lores2 = new ArrayList<String>();
+		lores2 = new ArrayList<>();
 		for (String lore : lores) {
 			lores2.add(MessageM.replaceAll(lore));
 		}
@@ -235,7 +235,7 @@ public class InventoryHandler {
 		ItemMeta shopBlockHuntPass_IM = shopBlockHuntPass.getItemMeta();
 		shopBlockHuntPass_IM.setDisplayName(MessageM.replaceAll((String) W.config.get(ConfigC.shop_BlockHuntPassv2Name)));
 		lores = W.config.getFile().getStringList(ConfigC.shop_BlockHuntPassv2Description.location);
-		lores2 = new ArrayList<String>();
+		lores2 = new ArrayList<>();
 		for (String lore : lores) {
 			lores2.add(MessageM.replaceAll(lore));
 		}
@@ -246,11 +246,11 @@ public class InventoryHandler {
 		shopBlockHuntPass.setItemMeta(shopBlockHuntPass_IM);
 
 		shop.setItem(0, shopTokens);
-		if ((Boolean) W.config.get(ConfigC.shop_blockChooserv1Enabled) == true
-				&& ((Boolean) W.shop.getFile().get(player.getName() + ".blockchooser") == null && !PermissionsM.hasPerm(player, Permissions.shopblockchooser, false))) {
+		if ((Boolean) W.config.get(ConfigC.shop_blockChooserv1Enabled)
+				&& (W.shop.getFile().get(player.getName() + ".blockchooser") == null && !PermissionsM.hasPerm(player, Permissions.shopblockchooser, false))) {
 			shop.setItem(1, shopBlockChooser);
 		}
-		if ((Boolean) W.config.get(ConfigC.shop_BlockHuntPassv2Enabled) == true) {
+		if ((Boolean) W.config.get(ConfigC.shop_BlockHuntPassv2Enabled)) {
 			shop.setItem(2, shopBlockHuntPass);
 		}
 		player.openInventory(shop);

@@ -125,7 +125,7 @@ public class OnEntityDamageByEntityEvent implements Listener {
 
 							int hidercount = (arena.playersInArena.size() - arena.seekers.size());
 							if ((hidercount <= 3) && (hidercount > 0)) {
-								List<String> hiders = new ArrayList<String>();
+								List<String> hiders = new ArrayList<>();
 								for (Player p : arena.playersInArena) {
 									if (!arena.seekers.contains(p)) {
 										hiders.add(p.getName());

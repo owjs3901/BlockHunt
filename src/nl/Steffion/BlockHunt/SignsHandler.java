@@ -88,7 +88,6 @@ public class SignsHandler {
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static void updateSigns() {
 		W.signs.load();
 		for (String sign : W.signs.getFile().getKeys(false)) {

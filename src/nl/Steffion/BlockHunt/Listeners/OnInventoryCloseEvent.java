@@ -32,7 +32,7 @@ public class OnInventoryCloseEvent implements Listener {
 					}
 				}
 
-				ArrayList<ItemStack> blocks = new ArrayList<ItemStack>();
+				ArrayList<ItemStack> blocks = new ArrayList<>();
 				for (ItemStack item : inv.getContents()) {
 					if (item != null) {
 						if (!item.getType().equals(Material.PAPER)) {

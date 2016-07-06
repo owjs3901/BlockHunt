@@ -1,19 +1,19 @@
 package nl.Steffion.BlockHunt;
-
+/**
+ * Steffion's Engine - Made by Steffion.
+ *
+ * You're allowed to use this engine for own usage, you're not allowed to
+ * republish the engine. Using this for your own plugin is allowed when a
+ * credit is placed somewhere in the plugin.
+ *
+ * Thanks for your cooperate!
+ *
+ * @author Steffion
+ */
 import nl.Steffion.BlockHunt.Managers.ConfigM;
 
 public enum ConfigC {
-	/**
-	 * Steffion's Engine - Made by Steffion.
-	 * 
-	 * You're allowed to use this engine for own usage, you're not allowed to
-	 * republish the engine. Using this for your own plugin is allowed when a
-	 * credit is placed somewhere in the plugin.
-	 * 
-	 * Thanks for your cooperate!
-	 * 
-	 * @author Steffion
-	 */
+
 
 	chat_tag("[" + BlockHunt.pdfFile.getName() + "] ", W.config), chat_normal("&b", W.config), chat_warning("&c", W.config), chat_error("&c", W.config), chat_arg("&e",
 			W.config), chat_header("&9", W.config), chat_headerhigh("%H_______.[ %A%header%%H ]._______", W.config),
@@ -117,7 +117,7 @@ public enum ConfigC {
 	 * @param config
 	 *            The config file.
 	 */
-	private ConfigC(Object value, ConfigM config) {
+	ConfigC(Object value, ConfigM config) {
 		this.value = value;
 		this.config = config;
 		this.location = this.name().replaceAll("_", ".");

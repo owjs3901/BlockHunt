@@ -23,7 +23,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 
-@SuppressWarnings("deprecation")
 public class ArenaHandler {
 	public static void loadArenas() {
 		W.arenaList.clear();
@@ -157,7 +156,7 @@ public class ArenaHandler {
 											ItemMeta shopBlockChooser_IM = shopBlockChooser.getItemMeta();
 											shopBlockChooser_IM.setDisplayName(MessageM.replaceAll((String) W.config.get(ConfigC.shop_blockChooserv1Name)));
 											List<String> lores = W.config.getFile().getStringList(ConfigC.shop_blockChooserv1Description.location);
-											List<String> lores2 = new ArrayList<String>();
+											List<String> lores2 = new ArrayList<>();
 											for (String lore : lores) {
 												lores2.add(MessageM.replaceAll(lore));
 											}
@@ -175,7 +174,7 @@ public class ArenaHandler {
 											ItemMeta shopBlockHuntPass_IM = shopBlockHuntPass.getItemMeta();
 											shopBlockHuntPass_IM.setDisplayName(MessageM.replaceAll((String) W.config.get(ConfigC.shop_BlockHuntPassv2Name)));
 											List<String> lores = W.config.getFile().getStringList(ConfigC.shop_BlockHuntPassv2Description.location);
-											List<String> lores2 = new ArrayList<String>();
+											List<String> lores2 = new ArrayList<>();
 											for (String lore : lores) {
 												lores2.add(MessageM.replaceAll(lore));
 											}
@@ -351,8 +350,8 @@ public class ArenaHandler {
 		System.out.println("[BlockHunt] Seekers have won " + arena.arenaName);
 		ArenaHandler.sendFMessage(arena, ConfigC.normal_winSeekers);
 
-		List<Player> winners = new ArrayList<Player>();
-		List<Player> losers = new ArrayList<Player>();
+		List<Player> winners = new ArrayList<>();
+		List<Player> losers = new ArrayList<>();
 
 		for (Player player : arena.playersInArena) {
 
@@ -401,8 +400,8 @@ public class ArenaHandler {
 		System.out.println("[BlockHunt] Hiders have won " + arena.arenaName);
 		ArenaHandler.sendFMessage(arena, ConfigC.normal_winHiders);
 
-		List<Player> winners = new ArrayList<Player>();
-		List<Player> losers = new ArrayList<Player>();
+		List<Player> winners = new ArrayList<>();
+		List<Player> losers = new ArrayList<>();
 
 		for (Player player : arena.playersInArena) {
 

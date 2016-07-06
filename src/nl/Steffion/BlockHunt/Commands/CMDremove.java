@@ -39,7 +39,7 @@ public class CMDremove extends DefaultCMD {
 						W.arenas.save();
 						W.signs.load();
 
-						W.arenaList.remove((Arena) arena);
+						W.arenaList.remove(arena);
 						return true;
 					}
 				}

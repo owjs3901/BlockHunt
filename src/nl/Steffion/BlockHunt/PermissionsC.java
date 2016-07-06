@@ -1,22 +1,22 @@
 package nl.Steffion.BlockHunt;
-
+/**
+ * Steffion's Engine - Made by Steffion.
+ *
+ * You're allowed to use this engine for own usage, you're not allowed to
+ * republish the engine. Using this for your own plugin is allowed when a
+ * credit is placed somewhere in the plugin.
+ *
+ * Thanks for your cooperate!
+ *
+ * @author Steffion
+ */
 public class PermissionsC {
-	/**
-	 * Steffion's Engine - Made by Steffion.
-	 * 
-	 * You're allowed to use this engine for own usage, you're not allowed to
-	 * republish the engine. Using this for your own plugin is allowed when a
-	 * credit is placed somewhere in the plugin.
-	 * 
-	 * Thanks for your cooperate!
-	 * 
-	 * @author Steffion
-	 */
+
 
 	public static String main = BlockHunt.pdfFile.getName().toLowerCase() + ".";
 
 	public enum PType {
-		ALL, PLAYER, MODERATOR, ADMIN, OP;
+		ALL, PLAYER, MODERATOR, ADMIN, OP
 	}
 
 	public enum Permissions {
@@ -28,7 +28,7 @@ public class PermissionsC {
 		public String perm;
 		public PType type;
 
-		private Permissions(String perm, PType type) {
+		Permissions(String perm, PType type) {
 			this.perm = perm;
 			this.type = type;
 		}
