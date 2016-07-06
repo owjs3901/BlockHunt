@@ -185,7 +185,7 @@ public class MessageM {
 		}
 
 		public static String TAG() {
-			return W.config.get(ConfigC.chat_header) + W.config.get(ConfigC.chat_tag) + W.config.get(ConfigC.chat_normal);
+			return (String)W.config.get(ConfigC.chat_header) +  W.config.get(ConfigC.chat_tag) + W.config.get(ConfigC.chat_normal);
 		}
 	}
 }
