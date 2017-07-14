@@ -121,6 +121,7 @@ public class OnEntityDamageByEntityEvent implements Listener {
 							MessageM.sendFMessage(player, ConfigC.normal_addedToken, "amount-" + (int) addingTokens);
 
 							arena.seekers.add(player);
+							player.setWalkSpeed(0.3F);
 							ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameHiderDied, "playername-" + player.getDisplayName(), "killer-" + damager.getDisplayName());
 
 							int hidercount = (arena.playersInArena.size() - arena.seekers.size());
