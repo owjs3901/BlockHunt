@@ -294,7 +294,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
                 for (Player player : arena.seekers) {
                     if (player.getInventory().getItem(0) == null || player.getInventory().getItem(0).getType() != Material.DIAMOND_SWORD) {
                         ItemStack i = new ItemStack(Material.DIAMOND_SWORD, 1);
-                        i.addEnchantment(Enchantment.DAMAGE_ALL, 10);
+                        i.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 10);
                         player.getInventory().setItem(0, i);
                         player.getInventory().setHelmet(new ItemStack(Material.IRON_HELMET, 1));
                         player.getInventory().setChestplate(new ItemStack(Material.IRON_CHESTPLATE, 1));
