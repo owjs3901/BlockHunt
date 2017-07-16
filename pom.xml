@@ -5,8 +5,7 @@
    <version>0.2.1-SNAPSHOT</version>
    <name>BlockHunt</name>
   <properties>
-    <pluginversion>${project.version}-${buildnumber}</pluginversion>
-    <!-- so as to allow local declaration when building locally-->
+    <plugin.version>${project.version}-${buildnumber}</plugin.version>
     <buildnumber />
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -30,52 +29,44 @@
   </distributionManagement>
   <repositories>
     <!-- Addstar repo -->
-    <repository>
-      <id>addstar-repo</id>
-      <url>http://maven.addstar.com.au/artifactory/ext-release-local</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>addstar-snapshot-repo</id>
-      <url>http://maven.addstar.com.au/artifactory/ext-snapshot-local</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </repository>
-
-    <repository>
-      <id>spigot-repo</id>
-      <url>https://hub.spigotmc.org/nexus/content/groups/public</url>
-    </repository>
-
-    <!-- Other repositories -->
-    <repository>
-      <id>maven-central</id>
-      <url>http://repo1.maven.org/maven2/</url>
-    </repository>
-    <!--Lib Disguises-->
+      <repository>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+        <id>addstar-repo</id>
+        <name>all-release</name>
+        <url>http://maven.addstar.com.au/artifactory/all-release</url>
+      </repository>
+      <repository>
+        <snapshots />
+        <id>addstar-snapshot-repo</id>
+        <name>all-snapshot</name>
+        <url>http://maven.addstar.com.au/artifactory/all-snapshot</url>
+      </repository>
+      <repository>
+          <id>spigot-repo</id>
+          <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+      </repository>
     <repository>
       <id>md_5-releases</id>
       <url>http://repo.md-5.net/content/repositories/releases/</url>
     </repository>
+      <repository>
+          <id>dmulloy2-repo</id>
+          <url>http://repo.dmulloy2.net/content/groups/public/</url>
+      </repository>
   </repositories>
   <dependencies>
     <dependency>
       <groupId>org.spigotmc</groupId>
-      <artifactId>spigot</artifactId>
-      <version>1.10-R0.1-SNAPSHOT</version>
+      <artifactId>spigot-api</artifactId>
+      <version>1.12-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
-    <!-- LibsDiguises is required for hiding -->
-    <dependency>
+      <dependency>
       <groupId>LibsDisguises</groupId>
       <artifactId>LibsDisguises</artifactId>
-      <version>9.0.7</version>
+      <version>9.4.0-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
