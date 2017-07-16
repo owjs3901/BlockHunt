@@ -333,7 +333,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
 
                         // blockAnnouncer code.
                         if ((arena.blockAnnouncerTime > 0) && (arena.timer == arena.blockAnnouncerTime)) {
-                            ArrayList<String> remainingBlocks = new ArrayList<String>();
+                            ArrayList<String> remainingBlocks = new ArrayList<>();
                             for (Player arenaPlayer : arena.playersInArena) {
                                 if (!arena.seekers.contains(arenaPlayer)) {
                                     String block = arenaPlayer.getInventory().getItem(8).getType().name();

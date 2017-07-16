@@ -101,7 +101,7 @@ public class OnPlayerInteractEvent implements Listener {
 				if (event.getClickedBlock().getType().equals(Material.ENCHANTMENT_TABLE) || event.getClickedBlock().getType().equals(Material.WORKBENCH)
 						|| event.getClickedBlock().getType().equals(Material.FURNACE) || event.getClickedBlock().getType().equals(Material.CHEST)
 						|| event.getClickedBlock().getType().equals(Material.ANVIL) || event.getClickedBlock().getType().equals(Material.ENDER_CHEST)
-						|| event.getClickedBlock().getType().equals(Material.JUKEBOX) || block.getFace(block).equals(Material.FIRE)) {
+						|| event.getClickedBlock().getType().equals(Material.JUKEBOX) || block.getRelative(event.getBlockFace()).getType().equals(Material.FIRE)) {
 					for (Arena arena : W.arenaList) {
 						if (arena.playersInArena.contains(player)) {
 							event.setCancelled(true);

@@ -97,7 +97,7 @@ public class ConfigM {
 			try {
 				this.file.getParentFile().mkdirs();
 				this.file.createNewFile();
-				if (this.fileLocation == BlockHunt.pdfFile.getName()) {
+				if (this.fileLocation.equals(BlockHunt.pdfFile.getName())) {
 					W.newFiles.add(this.fileName);
 				} else {
 					W.newFiles.add(this.fileLocation + this.fileName);

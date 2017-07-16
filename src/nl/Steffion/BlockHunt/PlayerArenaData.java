@@ -13,7 +13,7 @@ public class PlayerArenaData {
 	public ItemStack[] pArmor;
 	public Float pEXP;
 	public Integer pEXPL;
-        public Double pMaxHealth;
+	public Double pMaxHealth;
 	public Double pHealth;
 	public Integer pFood;
 	public Collection<PotionEffect> pPotionEffects;

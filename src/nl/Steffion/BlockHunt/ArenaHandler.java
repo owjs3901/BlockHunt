@@ -17,6 +17,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -89,7 +90,7 @@ public class ArenaHandler {
 							return;
 						}
 
-						LocationSerializable zero = new LocationSerializable(Bukkit.getWorld(player.getWorld().getName().toString()), 0, 0, 0, 0, 0);
+						LocationSerializable zero = new LocationSerializable(Bukkit.getWorld(player.getWorld().getName()), 0, 0, 0, 0, 0);
 						if (arena.lobbyWarp != null && arena.hidersWarp != null && arena.seekersWarp != null && arena.spawnWarp != null) {
 							if (!arena.lobbyWarp.equals(zero) && !arena.hidersWarp.equals(zero) && !arena.seekersWarp.equals(zero) && !arena.spawnWarp.equals(zero)) {
 								if (arena.gameState == ArenaState.WAITING || arena.gameState == ArenaState.STARTING) {
@@ -105,7 +106,7 @@ public class ArenaHandler {
 									Bukkit.getPluginManager().callEvent(event);
 
 									PlayerArenaData pad = new PlayerArenaData(player.getLocation(), player.getGameMode(), player.getInventory().getContents(), player
-											.getInventory().getArmorContents(), player.getExp(), player.getLevel(), player.getMaxHealth(), player.getHealth(), player.getFoodLevel(),
+											.getInventory().getArmorContents(), player.getExp(), player.getLevel(), player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue(), player.getHealth(), player.getFoodLevel(),
 											player.getActivePotionEffects(), player.getAllowFlight());
 
 									W.pData.put(player, pad);
@@ -117,7 +118,7 @@ public class ArenaHandler {
 									}
 									player.setFoodLevel(20);
 									player.setHealth(20);
-                                                                        player.setMaxHealth(20);
+									player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
 									player.setLevel(arena.timer);
 									player.setExp(0);
 									player.getInventory().clear();
@@ -299,7 +300,7 @@ public class ArenaHandler {
 			player.updateInventory();
 			player.setExp(pad.pEXP);
 			player.setLevel(pad.pEXPL);
-                        player.setMaxHealth(pad.pMaxHealth);
+			player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(pad.pMaxHealth);
 			player.setHealth(pad.pHealth);
 			player.setFoodLevel(pad.pFood);
 			player.addPotionEffects(pad.pPotionEffects);

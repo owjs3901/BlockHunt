@@ -13,7 +13,6 @@ import nl.Steffion.BlockHunt.Managers.MessageM;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class CMDcreate extends DefaultCMD {
 

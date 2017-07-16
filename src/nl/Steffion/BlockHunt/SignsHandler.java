@@ -96,7 +96,8 @@ public class SignsHandler {
 				Sign signblock = (Sign) loc.getBlock().getState();
 				String[] lines = signblock.getLines();
 				if (sign.contains("leave")) {
-					ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getList(ConfigC.sign_LEAVE.location);
+
+					ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getStringList(ConfigC.sign_LEAVE.location);
 					int linecount = 0;
 					for (String line : signLines) {
 						if (linecount <= 3) {
@@ -107,7 +108,7 @@ public class SignsHandler {
 					}
 					signblock.update();
 				} else if (sign.contains("shop")) {
-					ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getList(ConfigC.sign_SHOP.location);
+					ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getStringList(ConfigC.sign_SHOP.location);
 					int linecount = 0;
 					for (String line : signLines) {
 						if (linecount <= 3) {
@@ -121,7 +122,7 @@ public class SignsHandler {
 					for (Arena arena : W.arenaList) {
 						if (lines[1].endsWith(arena.arenaName)) {
 							if (arena.gameState.equals(ArenaState.WAITING)) {
-								ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getList(ConfigC.sign_WAITING.location);
+								ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getStringList(ConfigC.sign_WAITING.location);
 								int linecount = 0;
 								if (signLines != null) {
 									for (String line : signLines) {
@@ -137,7 +138,7 @@ public class SignsHandler {
 								}
 								signblock.update();
 							} else if (arena.gameState.equals(ArenaState.STARTING)) {
-								ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getList(ConfigC.sign_STARTING.location);
+								ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getStringList(ConfigC.sign_STARTING.location);
 								int linecount = 0;
 								if (signLines != null) {
 									for (String line : signLines) {
@@ -153,7 +154,7 @@ public class SignsHandler {
 								}
 								signblock.update();
 							} else if (arena.gameState.equals(ArenaState.INGAME)) {
-								ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getList(ConfigC.sign_INGAME.location);
+								ArrayList<String> signLines = (ArrayList<String>) W.config.getFile().getStringList(ConfigC.sign_INGAME.location);
 								int linecount = 0;
 								if (signLines != null) {
 									for (String line : signLines) {
