@@ -12,7 +12,7 @@ package nl.Steffion.BlockHunt.Commands;
  */
 import nl.Steffion.BlockHunt.ConfigC;
 import nl.Steffion.BlockHunt.BlockHunt;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Managers.CommandManager;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
 import nl.Steffion.BlockHunt.Managers.PermissionsManager;
@@ -24,9 +24,9 @@ public class CMDhelp extends DefaultCMD {
 
 
 	@Override
-	public boolean exectue(Player player, Command cmd, String label, String[] args) {
+	public boolean execute(Player player, Command cmd, String label, String[] args) {
 		int amountCommands = 0;
-		for (CommandManager command : W.commands) {
+		for (CommandManager command : MemoryStorage.commands) {
 			if (command.usage != null) {
 				amountCommands = amountCommands + 1;
 			}
@@ -41,13 +41,13 @@ public class CMDhelp extends DefaultCMD {
 			int page = 1;
 			MessageManager.sendFMessage(player, ConfigC.chat_headerhigh, "header-" + BlockHunt.pdfFile.getName() + " %Nhelp page %A" + page + "%N/%A" + maxPages);
 			int i = 1;
-			for (CommandManager command : W.commands) {
+			for (CommandManager command : MemoryStorage.commands) {
 				if (i <= 4) {
 					if (command.usage != null) {
 						if (PermissionsManager.hasPerm(player, command.permission, false)) {
-							MessageManager.sendMessage(player, "%A" + command.usage + "%N - " + W.messages.getFile().get(command.help.location));
+							MessageManager.sendMessage(player, "%A" + command.usage + "%N - " + MemoryStorage.messages.getFile().get(command.help.location));
 						} else {
-							MessageManager.sendMessage(player, "%W" + command.usage + "%N - " + W.messages.getFile().get(command.help.location));
+							MessageManager.sendMessage(player, "%MemoryStorage" + command.usage + "%N - " + MemoryStorage.messages.getFile().get(command.help.location));
 						}
 						i = i + 1;
 					}
@@ -70,14 +70,14 @@ public class CMDhelp extends DefaultCMD {
 			MessageManager.sendFMessage(player, ConfigC.chat_headerhigh, "header-" + BlockHunt.pdfFile.getName() + " %Nhelp page %A" + page + "%N/%A" + maxPages);
 
 			int i = 1;
-			for (CommandManager command : W.commands) {
+			for (CommandManager command : MemoryStorage.commands) {
 				if (i <= (page * 4) + 4) {
 					if (command.usage != null) {
 						if (i >= ((page - 1) * 4) + 1 && i <= ((page - 1) * 4) + 4) {
 							if (PermissionsManager.hasPerm(player, command.permission, false)) {
-								MessageManager.sendMessage(player, "%A" + command.usage + "%N - " + W.messages.getFile().get(command.help.location));
+								MessageManager.sendMessage(player, "%A" + command.usage + "%N - " + MemoryStorage.messages.getFile().get(command.help.location));
 							} else {
-								MessageManager.sendMessage(player, "%W" + command.usage + "%N - " + W.messages.getFile().get(command.help.location));
+								MessageManager.sendMessage(player, "%MemoryStorage" + command.usage + "%N - " + MemoryStorage.messages.getFile().get(command.help.location));
 							}
 						}
 						i = i + 1;

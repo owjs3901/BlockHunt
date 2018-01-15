@@ -4,7 +4,7 @@ import nl.Steffion.BlockHunt.Arena;
 import nl.Steffion.BlockHunt.Arena.ArenaState;
 import nl.Steffion.BlockHunt.BlockHunt;
 import nl.Steffion.BlockHunt.ConfigC;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
 
 import org.bukkit.command.Command;
@@ -13,13 +13,13 @@ import org.bukkit.entity.Player;
 public class CMDstart extends DefaultCMD {
 
 	@Override
-	public boolean exectue(Player player, Command cmd, String label, String[] args) {
+	public boolean execute(Player player, Command cmd, String label, String[] args) {
 		if (player != null) {
 			if (args.length <= 1) {
 				MessageManager.sendFMessage(player, ConfigC.error_notEnoughArguments, "syntax-" + BlockHunt.CMDstart.usage);
 			} else {
 				Arena arena = null;
-				for (Arena arena2 : W.arenaList) {
+				for (Arena arena2 : MemoryStorage.arenaList) {
 					if (arena2.arenaName.equalsIgnoreCase(args[1])) {
 						arena = arena2;
 					}

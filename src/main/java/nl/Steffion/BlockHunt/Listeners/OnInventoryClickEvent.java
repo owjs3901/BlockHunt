@@ -1,11 +1,8 @@
 package nl.Steffion.BlockHunt.Listeners;
 
-import nl.Steffion.BlockHunt.Arena;
+import nl.Steffion.BlockHunt.*;
 import nl.Steffion.BlockHunt.Arena.ArenaType;
-import nl.Steffion.BlockHunt.ArenaHandler;
-import nl.Steffion.BlockHunt.ConfigC;
-import nl.Steffion.BlockHunt.InventoryHandler;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
 
 import org.bukkit.Bukkit;
@@ -21,12 +18,11 @@ import org.bukkit.inventory.ItemStack;
 
 public class OnInventoryClickEvent implements Listener {
 
-	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onInventoryClickEvent(InventoryClickEvent event) {
 		Player player = (Player) event.getWhoClicked();
 
-		for (Arena arena : W.arenaList) {
+		for (Arena arena : MemoryStorage.arenaList) {
 			if (arena.playersInArena.contains(player) && !arena.seekers.contains(player)) {
 				if (event.getSlot() == 8 || event.getSlot() == 39) {
 					event.setCancelled(true);
@@ -54,67 +50,67 @@ public class OnInventoryClickEvent implements Listener {
 				return;
 
 			if (inv.getName().startsWith("\u00A7r")) {
-				if (inv.getName().equals(MessageManager.replaceAll("\u00A7r" + W.config.get(ConfigC.shop_title)))) {
+				if (inv.getName().equals(MessageManager.replaceAll("\u00A7r" + MemoryStorage.config.get(ConfigC.shop_title)))) {
 					event.setCancelled(true);
 					ItemStack item = event.getCurrentItem();
-					if (W.shop.getFile().get(player.getName() + ".tokens") == null) {
-						W.shop.getFile().set(player.getName() + ".tokens", 0);
-						W.shop.save();
+					if (MemoryStorage.shop.getFile().get(player.getName() + ".tokens") == null) {
+						MemoryStorage.shop.getFile().set(player.getName() + ".tokens", 0);
+						MemoryStorage.shop.save();
 					}
-					int playerTokens = W.shop.getFile().getInt(player.getName() + ".tokens");
+					int playerTokens = MemoryStorage.shop.getFile().getInt(player.getName() + ".tokens");
 					if (item == null)
 						return;
 					if (item.getType().equals(Material.AIR))
 						return;
 					if (item.getItemMeta().getDisplayName() == null)
 						return;
-					if (item.getItemMeta().getDisplayName().equals(MessageManager.replaceAll(W.config.get(ConfigC.shop_blockChooserv1Name).toString()))) {
-						if (playerTokens >= (Integer) W.config.get(ConfigC.shop_blockChooserv1Price)) {
-							W.shop.getFile().set(player.getName() + ".blockchooser", true);
-							W.shop.getFile().set(player.getName() + ".tokens", playerTokens - (Integer) W.config.get(ConfigC.shop_blockChooserv1Price));
-							W.shop.save();
-							MessageManager.sendFMessage(player, ConfigC.normal_shopBoughtItem, "itemname-" + W.config.get(ConfigC.shop_blockChooserv1Name));
+					if (item.getItemMeta().getDisplayName().equals(MessageManager.replaceAll(MemoryStorage.config.get(ConfigC.shop_blockChooserv1Name).toString()))) {
+						if (playerTokens >= (Integer) MemoryStorage.config.get(ConfigC.shop_blockChooserv1Price)) {
+							MemoryStorage.shop.getFile().set(player.getName() + ".blockchooser", true);
+							MemoryStorage.shop.getFile().set(player.getName() + ".tokens", playerTokens - (Integer) MemoryStorage.config.get(ConfigC.shop_blockChooserv1Price));
+							MemoryStorage.shop.save();
+							MessageManager.sendFMessage(player, ConfigC.normal_shopBoughtItem, "itemname-" + MemoryStorage.config.get(ConfigC.shop_blockChooserv1Name));
 						} else {
 							MessageManager.sendFMessage(player, ConfigC.error_shopNeedMoreTokens);
 						}
-					} else if (item.getItemMeta().getDisplayName().equals(MessageManager.replaceAll(W.config.get(ConfigC.shop_BlockHuntPassv2Name).toString()))) {
-						if (playerTokens >= (Integer) W.config.get(ConfigC.shop_BlockHuntPassv2Price)) {
-							if (W.shop.getFile().get(player.getName() + ".blockhuntpass") == null) {
-								W.shop.getFile().set(player.getName() + ".blockhuntpass", 0);
-								W.shop.save();
+					} else if (item.getItemMeta().getDisplayName().equals(MessageManager.replaceAll(MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Name).toString()))) {
+						if (playerTokens >= (Integer) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Price)) {
+							if (MemoryStorage.shop.getFile().get(player.getName() + ".blockhuntpass") == null) {
+								MemoryStorage.shop.getFile().set(player.getName() + ".blockhuntpass", 0);
+								MemoryStorage.shop.save();
 							}
 
-							W.shop.getFile().set(player.getName() + ".blockhuntpass", (Integer) W.shop.getFile().get(player.getName() + ".blockhuntpass") + 1);
-							W.shop.getFile().set(player.getName() + ".tokens", playerTokens - (Integer) W.config.get(ConfigC.shop_BlockHuntPassv2Price));
-							W.shop.save();
-							MessageManager.sendFMessage(player, ConfigC.normal_shopBoughtItem, "itemname-" + W.config.get(ConfigC.shop_BlockHuntPassv2Name));
+							MemoryStorage.shop.getFile().set(player.getName() + ".blockhuntpass", (Integer) MemoryStorage.shop.getFile().get(player.getName() + ".blockhuntpass") + 1);
+							MemoryStorage.shop.getFile().set(player.getName() + ".tokens", playerTokens - (Integer) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Price));
+							MemoryStorage.shop.save();
+							MessageManager.sendFMessage(player, ConfigC.normal_shopBoughtItem, "itemname-" + MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Name));
 						} else {
 							MessageManager.sendFMessage(player, ConfigC.error_shopNeedMoreTokens);
 						}
 					}
 
 					InventoryHandler.openShop(player);
-				} else if (inv.getName().contains(MessageManager.replaceAll((String) W.config.get(ConfigC.shop_blockChooserv1Name)))) {
+				} else if (inv.getName().contains(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_blockChooserv1Name)))) {
 					event.setCancelled(true);
 					if (event.getCurrentItem().getType() != Material.AIR) {
 						if (event.getCurrentItem().getType().isBlock()) {
-							W.choosenBlock.put(player, event.getCurrentItem());
+							MemoryStorage.choosenBlock.put(player, event.getCurrentItem());
 							MessageManager.sendFMessage(player, ConfigC.normal_shopChoosenBlock, "block-"
 									+ event.getCurrentItem().getType().toString().replaceAll("_", "").replaceAll("BLOCK", "").toLowerCase());
 						} else {
 							MessageManager.sendFMessage(player, ConfigC.error_setNotABlock);
 						}
 					}
-				} else if (inv.getName().contains(MessageManager.replaceAll((String) W.config.get(ConfigC.shop_BlockHuntPassv2Name)))) {
+				} else if (inv.getName().contains(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Name)))) {
 					event.setCancelled(true);
 					if (event.getCurrentItem().getType() != Material.AIR) {
 						if (event.getCurrentItem().getType().equals(Material.WOOL) && event.getCurrentItem().getDurability() == (short) 11) {
 							int i = 0;
-							for (Arena arena : W.arenaList) {
+							for (Arena arena : MemoryStorage.arenaList) {
 								if (arena.playersInArena.contains(player)) {
 									for (Player playerCheck : arena.playersInArena) {
-										if (W.choosenSeeker.get(playerCheck) != null) {
-											if (W.choosenSeeker.get(playerCheck)) {
+										if (MemoryStorage.choosenSeeker.get(playerCheck) != null) {
+											if (MemoryStorage.choosenSeeker.get(playerCheck)) {
 												i = i + 1;
 											}
 										}
@@ -124,28 +120,28 @@ public class OnInventoryClickEvent implements Listener {
 								if (i >= arena.amountSeekersOnStart) {
 									MessageManager.sendFMessage(player, ConfigC.error_shopMaxSeekersReached);
 								} else {
-									W.choosenSeeker.put(player, true);
+									MemoryStorage.choosenSeeker.put(player, true);
 									player.getInventory().setItemInHand(new ItemStack(Material.AIR));
 									player.updateInventory();
 									MessageManager.sendFMessage(player, ConfigC.normal_shopChoosenSeeker);
 									inv.clear();
-									if (W.shop.getFile().getInt(player.getName() + ".blockhuntpass") == 1) {
-										W.shop.getFile().set(player.getName() + ".blockhuntpass", null);
-										W.shop.save();
+									if (MemoryStorage.shop.getFile().getInt(player.getName() + ".blockhuntpass") == 1) {
+										MemoryStorage.shop.getFile().set(player.getName() + ".blockhuntpass", null);
+										MemoryStorage.shop.save();
 									} else {
-										W.shop.getFile().set(player.getName() + ".blockhuntpass", W.shop.getFile().getInt(player.getName() + ".blockhuntpass") - 1);
-										W.shop.save();
+										MemoryStorage.shop.getFile().set(player.getName() + ".blockhuntpass", MemoryStorage.shop.getFile().getInt(player.getName() + ".blockhuntpass") - 1);
+										MemoryStorage.shop.save();
 									}
 								}
 							}
 
 						} else if (event.getCurrentItem().getType().equals(Material.WOOL) && event.getCurrentItem().getDurability() == (short) 14) {
 							int i = 0;
-							for (Arena arena : W.arenaList) {
+							for (Arena arena : MemoryStorage.arenaList) {
 								if (arena.playersInArena.contains(player)) {
 									for (Player playerCheck : arena.playersInArena) {
-										if (W.choosenSeeker.get(playerCheck) != null) {
-											if (!W.choosenSeeker.get(playerCheck)) {
+										if (MemoryStorage.choosenSeeker.get(playerCheck) != null) {
+											if (!MemoryStorage.choosenSeeker.get(playerCheck)) {
 												i = i + 1;
 											}
 										}
@@ -155,17 +151,17 @@ public class OnInventoryClickEvent implements Listener {
 								if (i >= (arena.playersInArena.size() - 1)) {
 									MessageManager.sendFMessage(player, ConfigC.error_shopMaxHidersReached);
 								} else {
-									W.choosenSeeker.put(player, false);
+									MemoryStorage.choosenSeeker.put(player, false);
 									player.getInventory().setItemInHand(new ItemStack(Material.AIR));
 									player.updateInventory();
 									MessageManager.sendFMessage(player, ConfigC.normal_shopChoosenHiders);
 									inv.clear();
-									if (W.shop.getFile().getInt(player.getName() + ".blockhuntpass") == 1) {
-										W.shop.getFile().set(player.getName() + ".blockhuntpass", null);
-										W.shop.save();
+									if (MemoryStorage.shop.getFile().getInt(player.getName() + ".blockhuntpass") == 1) {
+										MemoryStorage.shop.getFile().set(player.getName() + ".blockhuntpass", null);
+										MemoryStorage.shop.save();
 									} else {
-										W.shop.getFile().set(player.getName() + ".blockhuntpass", W.shop.getFile().getInt(player.getName() + ".blockhuntpass") - 1);
-										W.shop.save();
+										MemoryStorage.shop.getFile().set(player.getName() + ".blockhuntpass", MemoryStorage.shop.getFile().getInt(player.getName() + ".blockhuntpass") - 1);
+										MemoryStorage.shop.save();
 									}
 								}
 							}
@@ -177,7 +173,7 @@ public class OnInventoryClickEvent implements Listener {
 					String arenaname = inv.getItem(0).getItemMeta().getDisplayName().replaceAll(MessageManager.replaceAll("%NBlockHunt arena: %A"), "");
 
 					Arena arena = null;
-					for (Arena arena2 : W.arenaList) {
+					for (Arena arena2 : MemoryStorage.arenaList) {
 						if (arena2.arenaName.equalsIgnoreCase(arenaname)) {
 							arena = arena2;
 						}
@@ -228,13 +224,13 @@ public class OnInventoryClickEvent implements Listener {
 	}
 
 	public void save(Arena arena) {
-		W.arenas.getFile().set(arena.arenaName, arena);
-		W.arenas.save();
+		MemoryStorage.arenas.getFile().set(arena.arenaName, arena);
+		MemoryStorage.arenas.save();
 		ArenaHandler.loadArenas();
 	}
 
 	public static void updownButton(Player player, ItemStack item, Arena arena, ArenaType at, int option, int max, int min, int add, int remove) {
-		if (item.getItemMeta().getDisplayName().contains((String) W.messages.get(ConfigC.button_add2))) {
+		if (item.getItemMeta().getDisplayName().contains((String) MemoryStorage.messages.get(ConfigC.button_add2))) {
 			if (option < max) {
 				switch (at) {
 				case maxPlayers:
@@ -274,7 +270,7 @@ public class OnInventoryClickEvent implements Listener {
 			} else {
 				MessageManager.sendFMessage(player, ConfigC.error_setTooHighNumber, "max-" + max);
 			}
-		} else if (item.getItemMeta().getDisplayName().contains((String) W.messages.get(ConfigC.button_remove2))) {
+		} else if (item.getItemMeta().getDisplayName().contains((String) MemoryStorage.messages.get(ConfigC.button_remove2))) {
 			if (option > min) {
 				switch (at) {
 				case maxPlayers:

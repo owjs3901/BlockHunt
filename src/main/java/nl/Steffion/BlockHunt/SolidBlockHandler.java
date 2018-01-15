@@ -26,15 +26,15 @@ public class SolidBlockHandler {
 		
 		Block pBlock = player.getLocation().getBlock();
 
-		if (W.hiddenLoc.get(player) != null) {
-			pBlock = W.hiddenLoc.get(player).getBlock();
+		if (MemoryStorage.hiddenLoc.get(player) != null) {
+			pBlock = MemoryStorage.hiddenLoc.get(player).getBlock();
 		}
 
 		block.setAmount(5);
 		for (Player pl : Bukkit.getOnlinePlayers()) {
 			if (!pl.equals(player)) {
-				if (W.hiddenLocWater.get(player) != null) {
-					if (W.hiddenLocWater.get(player)) {
+				if (MemoryStorage.hiddenLocWater.get(player) != null) {
+					if (MemoryStorage.hiddenLocWater.get(player)) {
 						pl.sendBlockChange(pBlock.getLocation(), Material.STATIONARY_WATER, (byte) 0);
 					} else {
 						pl.sendBlockChange(pBlock.getLocation(), Material.AIR, (byte) 0);
@@ -43,7 +43,7 @@ public class SolidBlockHandler {
 					pl.sendBlockChange(pBlock.getLocation(), Material.AIR, (byte) 0);
 				}
 
-				W.hiddenLocWater.remove(player);
+				MemoryStorage.hiddenLocWater.remove(player);
 			}
 		}
 

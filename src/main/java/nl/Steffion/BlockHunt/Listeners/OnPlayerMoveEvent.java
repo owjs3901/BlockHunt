@@ -4,9 +4,8 @@ import nl.Steffion.BlockHunt.Arena;
 import nl.Steffion.BlockHunt.ArenaHandler;
 import nl.Steffion.BlockHunt.Arena.ArenaState;
 import nl.Steffion.BlockHunt.BlockHunt;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -23,10 +22,10 @@ public class OnPlayerMoveEvent implements Listener {
 		// Early exit if no one is in any arena
 		if (ArenaHandler.noPlayersInArenas()) return;
 		Player player = event.getPlayer();
-		for (Arena arena : W.arenaList) {
+		for (Arena arena : MemoryStorage.arenaList) {
 			if (arena.playersInArena.contains(player)) {
 				if (arena.gameState == ArenaState.INGAME) {
-					W.moveLoc.put(player, player.getLocation());
+					MemoryStorage.moveLoc.put(player, player.getLocation());
 					if(arena.pos1 == null || arena.pos2 == null){
 						BlockHunt.plugin.getLogger().info("Arena:"+
 								arena.arenaName+" appears to have bad coords : pos1:"+

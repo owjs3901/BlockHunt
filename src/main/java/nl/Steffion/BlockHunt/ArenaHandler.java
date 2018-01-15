@@ -22,12 +22,12 @@ import org.bukkit.potion.PotionEffect;
 
 public class ArenaHandler {
 	public static void loadArenas() {
-		W.arenaList.clear();
-		for (String arenaName : W.arenas.getFile().getKeys(false)) {
-			W.arenaList.add((Arena) W.arenas.getFile().get(arenaName));
+		MemoryStorage.arenaList.clear();
+		for (String arenaName : MemoryStorage.arenas.getFile().getKeys(false)) {
+			MemoryStorage.arenaList.add((Arena) MemoryStorage.arenas.getFile().get(arenaName));
 		}
 
-		for (Arena arena : W.arenaList) {
+		for (Arena arena : MemoryStorage.arenaList) {
 			ScoreboardHandler.createScoreboard(arena);
 		}
 	}
@@ -49,7 +49,7 @@ public class ArenaHandler {
 	public static void playerJoinArena(Player player, String arenaname) {
 		boolean found = false;
 		boolean alreadyJoined = false;
-		for (Arena arena : W.arenaList) {
+		for (Arena arena : MemoryStorage.arenaList) {
 			if (arena.playersInArena != null) {
 				if (arena.playersInArena.contains(player)) {
 					alreadyJoined = true;
@@ -58,7 +58,7 @@ public class ArenaHandler {
 		}
 
 		if (!alreadyJoined) {
-			for (Arena arena : W.arenaList) {
+			for (Arena arena : MemoryStorage.arenaList) {
 				if (arena.arenaName.equalsIgnoreCase(arenaname)) {
 					found = true;
 					if (arena.disguiseBlocks.isEmpty()) {
@@ -81,7 +81,7 @@ public class ArenaHandler {
 							}
 						}
 
-						if ((Boolean) W.config.get(ConfigC.requireInventoryClearOnJoin) && !inventoryempty) {
+						if ((Boolean) MemoryStorage.config.get(ConfigC.requireInventoryClearOnJoin) && !inventoryempty) {
 							MessageManager.sendFMessage(player, ConfigC.error_joinInventoryNotEmpty);
 							return;
 						}
@@ -105,7 +105,7 @@ public class ArenaHandler {
 											.getInventory().getArmorContents(), player.getExp(), player.getLevel(), player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue(), player.getHealth(), player.getFoodLevel(),
 											player.getActivePotionEffects(), player.getAllowFlight());
 
-									W.pData.put(player, pad);
+									MemoryStorage.pData.put(player, pad);
 
 									player.teleport(arena.lobbyWarp);
 									player.setGameMode(GameMode.SURVIVAL);
@@ -146,13 +146,13 @@ public class ArenaHandler {
 																			// player
 									}
 
-									if ((Boolean) W.config.get(ConfigC.shop_blockChooserv1Enabled)) {
-										if (W.shop.getFile().get(player.getName() + ".blockchooser") != null
+									if ((Boolean) MemoryStorage.config.get(ConfigC.shop_blockChooserv1Enabled)) {
+										if (MemoryStorage.shop.getFile().get(player.getName() + ".blockchooser") != null
 												|| PermissionsManager.hasPerm(player, Permissions.shopblockchooser, false)) {
-											ItemStack shopBlockChooser = new ItemStack(Material.getMaterial((String) W.config.get(ConfigC.shop_blockChooserv1IDname)), 1);
+											ItemStack shopBlockChooser = new ItemStack(Material.getMaterial((String) MemoryStorage.config.get(ConfigC.shop_blockChooserv1IDname)), 1);
 											ItemMeta shopBlockChooser_IM = shopBlockChooser.getItemMeta();
-											shopBlockChooser_IM.setDisplayName(MessageManager.replaceAll((String) W.config.get(ConfigC.shop_blockChooserv1Name)));
-											List<String> lores = W.config.getFile().getStringList(ConfigC.shop_blockChooserv1Description.location);
+											shopBlockChooser_IM.setDisplayName(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_blockChooserv1Name)));
+											List<String> lores = MemoryStorage.config.getFile().getStringList(ConfigC.shop_blockChooserv1Description.location);
 											List<String> lores2 = new ArrayList<>();
 											for (String lore : lores) {
 												lores2.add(MessageManager.replaceAll(lore));
@@ -164,13 +164,13 @@ public class ArenaHandler {
 										}
 									}
 
-									if ((Boolean) W.config.get(ConfigC.shop_BlockHuntPassv2Enabled)) {
-										if (W.shop.getFile().getInt(player.getName() + ".blockhuntpass") != 0) {
-											ItemStack shopBlockHuntPass = new ItemStack(Material.getMaterial((String) W.config.get(ConfigC.shop_BlockHuntPassv2IDName)),
+									if ((Boolean) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Enabled)) {
+										if (MemoryStorage.shop.getFile().getInt(player.getName() + ".blockhuntpass") != 0) {
+											ItemStack shopBlockHuntPass = new ItemStack(Material.getMaterial((String) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2IDName)),
 													1);
 											ItemMeta shopBlockHuntPass_IM = shopBlockHuntPass.getItemMeta();
-											shopBlockHuntPass_IM.setDisplayName(MessageManager.replaceAll((String) W.config.get(ConfigC.shop_BlockHuntPassv2Name)));
-											List<String> lores = W.config.getFile().getStringList(ConfigC.shop_BlockHuntPassv2Description.location);
+											shopBlockHuntPass_IM.setDisplayName(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Name)));
+											List<String> lores = MemoryStorage.config.getFile().getStringList(ConfigC.shop_BlockHuntPassv2Description.location);
 											List<String> lores2 = new ArrayList<>();
 											for (String lore : lores) {
 												lores2.add(MessageManager.replaceAll(lore));
@@ -178,7 +178,7 @@ public class ArenaHandler {
 
 											shopBlockHuntPass_IM.setLore(lores2);
 											shopBlockHuntPass.setItemMeta(shopBlockHuntPass_IM);
-											shopBlockHuntPass.setAmount(W.shop.getFile().getInt(player.getName() + ".blockhuntpass"));
+											shopBlockHuntPass.setAmount(MemoryStorage.shop.getFile().getInt(player.getName() + ".blockhuntpass"));
 
 											player.getInventory().addItem(shopBlockHuntPass);
 										}
@@ -219,7 +219,7 @@ public class ArenaHandler {
 	public static void playerLeaveArena(Player player, boolean message, boolean cleanup) {
 
 		Arena arena = null;
-		for (Arena arena2 : W.arenaList) {
+		for (Arena arena2 : MemoryStorage.arenaList) {
 			if (arena2.playersInArena != null) {
 				if (arena2.playersInArena.contains(player)) {
 					arena = arena2;
@@ -258,7 +258,7 @@ public class ArenaHandler {
 				}
 
 				if (arena.seekers.size() <= 0 && arena.gameState == ArenaState.INGAME) {
-					Player seeker = arena.playersInArena.get(W.random.nextInt(arena.playersInArena.size()));
+					Player seeker = arena.playersInArena.get(MemoryStorage.random.nextInt(arena.playersInArena.size()));
 					ArenaHandler.sendFMessage(arena, ConfigC.warning_ingameNEWSeekerChoosen, "seeker-" + seeker.getName());
 					ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameSeekerChoosen, "seeker-" + seeker.getName());
 					DisguiseAPI.undisguiseToAll(seeker);
@@ -268,7 +268,7 @@ public class ArenaHandler {
 					seeker.getInventory().clear();
 					arena.seekers.add(seeker);
 					seeker.teleport(arena.seekersWarp);
-					W.seekertime.put(seeker, arena.waitingTimeSeeker);
+					MemoryStorage.seekertime.put(seeker, arena.waitingTimeSeeker);
 					seeker.setWalkSpeed(0.3F);
 
 					// Fix for client not showing players after they join
@@ -286,8 +286,8 @@ public class ArenaHandler {
 
 			PlayerArenaData pad = new PlayerArenaData(null, null, null, null, null, null, null, null, null, null, false);
 
-			if (W.pData.get(player) != null) {
-				pad = W.pData.get(player);
+			if (MemoryStorage.pData.get(player) != null) {
+				pad = MemoryStorage.pData.get(player);
 			}
 
 			player.getInventory().clear();
@@ -308,14 +308,14 @@ public class ArenaHandler {
 			}
 			player.setWalkSpeed(0.2F);
 
-			W.pData.remove(player);
+			MemoryStorage.pData.remove(player);
 
 			for (Player pl : Bukkit.getOnlinePlayers()) {
 				pl.showPlayer(player);
-				if (W.hiddenLoc.get(player) != null) {
-					if (W.hiddenLocWater.get(player) != null) {
-						Block pBlock = W.hiddenLoc.get(player).getBlock();
-						if (W.hiddenLocWater.get(player)) {
+				if (MemoryStorage.hiddenLoc.get(player) != null) {
+					if (MemoryStorage.hiddenLocWater.get(player) != null) {
+						Block pBlock = MemoryStorage.hiddenLoc.get(player).getBlock();
+						if (MemoryStorage.hiddenLocWater.get(player)) {
 							pl.sendBlockChange(pBlock.getLocation(), Material.STATIONARY_WATER, (byte) 0);
 						} else {
 							pl.sendBlockChange(pBlock.getLocation(), Material.AIR, (byte) 0);
@@ -344,8 +344,7 @@ public class ArenaHandler {
 	}
 
 	public static void seekersWin(Arena arena) {
-		System.out.println("[BlockHunt] Seekers have won " + arena.arenaName);
-		ArenaHandler.sendFMessage(arena, ConfigC.normal_winSeekers);
+		String cause = "[BlockHunt] Seekers have won " + arena.arenaName;
 
 		List<Player> winners = new ArrayList<>();
 		List<Player> losers = new ArrayList<>();
@@ -361,13 +360,13 @@ public class ArenaHandler {
 						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("%player%", player.getDisplayName()));
 					}
 
-					if (W.shop.getFile().get(player.getName() + ".tokens") == null) {
-						W.shop.getFile().set(player.getName() + ".tokens", 0);
-						W.shop.save();
+					if (MemoryStorage.shop.getFile().get(player.getName() + ".tokens") == null) {
+						MemoryStorage.shop.getFile().set(player.getName() + ".tokens", 0);
+						MemoryStorage.shop.save();
 					}
-					int playerTokens = W.shop.getFile().getInt(player.getName() + ".tokens");
-					W.shop.getFile().set(player.getName() + ".tokens", playerTokens + arena.seekersTokenWin);
-					W.shop.save();
+					int playerTokens = MemoryStorage.shop.getFile().getInt(player.getName() + ".tokens");
+					MemoryStorage.shop.getFile().set(player.getName() + ".tokens", playerTokens + arena.seekersTokenWin);
+					MemoryStorage.shop.save();
 
 					MessageManager.sendFMessage(player, ConfigC.normal_addedToken, "amount-" + arena.seekersTokenWin);
 
@@ -380,22 +379,11 @@ public class ArenaHandler {
 
 		EndArenaEvent event = new EndArenaEvent(winners, losers, arena);
 		Bukkit.getServer().getPluginManager().callEvent(event);
-
-		arena.seekers.clear();
-
-		for (Player player : arena.playersInArena) {
-			playerLeaveArena(player, false, false);
-			player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
-		}
-
-		arena.gameState = ArenaState.WAITING;
-		arena.timer = 0;
-		arena.playersInArena.clear();
+		stopArena(arena, cause, ConfigC.normal_winSeekers);
 	}
 
 	public static void hidersWin(Arena arena) {
-		System.out.println("[BlockHunt] Hiders have won " + arena.arenaName);
-		ArenaHandler.sendFMessage(arena, ConfigC.normal_winHiders);
+		String cause = "[BlockHunt] Hiders have won " + arena.arenaName;
 
 		List<Player> winners = new ArrayList<>();
 		List<Player> losers = new ArrayList<>();
@@ -413,13 +401,13 @@ public class ArenaHandler {
 						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("%player%", player.getDisplayName()));
 					}
 
-					if (W.shop.getFile().get(player.getName() + ".tokens") == null) {
-						W.shop.getFile().set(player.getName() + ".tokens", 0);
-						W.shop.save();
+					if (MemoryStorage.shop.getFile().get(player.getName() + ".tokens") == null) {
+						MemoryStorage.shop.getFile().set(player.getName() + ".tokens", 0);
+						MemoryStorage.shop.save();
 					}
-					int playerTokens = W.shop.getFile().getInt(player.getName() + ".tokens");
-					W.shop.getFile().set(player.getName() + ".tokens", playerTokens + arena.hidersTokenWin);
-					W.shop.save();
+					int playerTokens = MemoryStorage.shop.getFile().getInt(player.getName() + ".tokens");
+					MemoryStorage.shop.getFile().set(player.getName() + ".tokens", playerTokens + arena.hidersTokenWin);
+					MemoryStorage.shop.save();
 
 					MessageManager.sendFMessage(player, ConfigC.normal_addedToken, "amount-" + arena.hidersTokenWin);
 				}
@@ -429,23 +417,12 @@ public class ArenaHandler {
 
 		EndArenaEvent event = new EndArenaEvent(winners, losers, arena);
 		Bukkit.getServer().getPluginManager().callEvent(event);
-
-		arena.seekers.clear();
-
-		for (Player player : arena.playersInArena) {
-			playerLeaveArena(player, false, false);
-			player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
-		}
-
-		arena.gameState = ArenaState.WAITING;
-		arena.timer = 0;
-		arena.playersInArena.clear();
+		stopArena(arena, cause, ConfigC.normal_winHiders);
 	}
 
-	public static void stopArena(Arena arena) {
-		System.out.println("[BlockHunt] Arena " + arena.arenaName + " has been stopped");
-		ArenaHandler.sendFMessage(arena, ConfigC.warning_arenaStopped);
-
+	public static void stopArena(Arena arena,String cause, ConfigC message) {
+		System.out.println(cause);
+		ArenaHandler.sendFMessage(arena, message);
 		arena.seekers.clear();
 
 		for (Player player : arena.playersInArena) {
@@ -460,7 +437,7 @@ public class ArenaHandler {
 	
 	public static boolean noPlayersInArenas() {
 		// Check if there are any players in any arena (quick way to early exit for event handlers)
-		for (Arena arena : W.arenaList) {
+		for (Arena arena : MemoryStorage.arenaList) {
 			if (arena.playersInArena.size() > 0) {
 				return false;
 			}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import nl.Steffion.BlockHunt.Arena;
 import nl.Steffion.BlockHunt.ArenaHandler;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
 
 import org.bukkit.Material;
@@ -26,7 +26,7 @@ public class OnInventoryCloseEvent implements Listener {
 				String arenaname = inv.getItem(0).getItemMeta().getDisplayName().replaceAll(MessageManager.replaceAll("%NDisguiseBlocks of arena: %A"), "");
 
 				Arena arena = null;
-				for (Arena arena2 : W.arenaList) {
+				for (Arena arena2 : MemoryStorage.arenaList) {
 					if (arena2.arenaName.equalsIgnoreCase(arenaname)) {
 						arena = arena2;
 					}
@@ -52,8 +52,8 @@ public class OnInventoryCloseEvent implements Listener {
 	}
 
 	public void save(Arena arena) {
-		W.arenas.getFile().set(arena.arenaName, arena);
-		W.arenas.save();
+		MemoryStorage.arenas.getFile().set(arena.arenaName, arena);
+		MemoryStorage.arenas.save();
 		ArenaHandler.loadArenas();
 	}
 }

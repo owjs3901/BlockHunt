@@ -14,7 +14,7 @@ import java.util.List;
 
 import nl.Steffion.BlockHunt.ConfigC;
 import nl.Steffion.BlockHunt.PermissionsC.Permissions;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Commands.DefaultCMD;
 
 public class CommandManager {
@@ -44,6 +44,6 @@ public class CommandManager {
 		this.CMD = CMD;
 		this.usage = usage;
 
-		W.commands.add(this);
+		MemoryStorage.commands.add(this);
 	}
 }

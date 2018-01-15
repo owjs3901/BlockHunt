@@ -140,37 +140,37 @@ public class BlockHunt extends JavaPlugin implements Listener {
 
 		ConfigManager.newFiles();
 
-		CMD = new CommandManager("BlockHunt", "BlockHunt", null, null, Permissions.info, ConfigC.help_info, (Boolean) W.config.get(ConfigC.commandEnabled_info), BlockHuntCMD,
+		CMD = new CommandManager("BlockHunt", "BlockHunt", null, null, Permissions.info, ConfigC.help_info, (Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_info), BlockHuntCMD,
 				new CMDinfo(), null);
-		CMDinfo = new CommandManager("BlockHunt INFO", "BlockHunt", "info", "i", Permissions.info, ConfigC.help_info, (Boolean) W.config.get(ConfigC.commandEnabled_info),
+		CMDinfo = new CommandManager("BlockHunt INFO", "BlockHunt", "info", "i", Permissions.info, ConfigC.help_info, (Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_info),
 				BlockHuntCMD, new CMDinfo(), "/BlockHunt [info|i]");
-		CMDhelp = new CommandManager("BlockHunt HELP", "BlockHunt", "help", "h", Permissions.help, ConfigC.help_help, (Boolean) W.config.get(ConfigC.commandEnabled_help),
+		CMDhelp = new CommandManager("BlockHunt HELP", "BlockHunt", "help", "h", Permissions.help, ConfigC.help_help, (Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_help),
 				BlockHuntCMD, new CMDhelp(), "/BlockHunt <help|h> [page number]");
 		CMDreload = new CommandManager("BlockHunt RELOAD", "BlockHunt", "reload", "r", Permissions.reload, ConfigC.help_reload,
-				(Boolean) W.config.get(ConfigC.commandEnabled_reload), BlockHuntCMD, new CMDreload(), "/BlockHunt <reload|r>");
-		CMDjoin = new CommandManager("BlockHunt JOIN", "BlockHunt", "join", "j", Permissions.join, ConfigC.help_join, (Boolean) W.config.get(ConfigC.commandEnabled_join),
+				(Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_reload), BlockHuntCMD, new CMDreload(), "/BlockHunt <reload|r>");
+		CMDjoin = new CommandManager("BlockHunt JOIN", "BlockHunt", "join", "j", Permissions.join, ConfigC.help_join, (Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_join),
 				BlockHuntCMD, new CMDjoin(), "/BlockHunt <join|j> <arenaname>");
 		CMDleave = new CommandManager("BlockHunt LEAVE", "BlockHunt", "leave", "l", Permissions.leave, ConfigC.help_leave,
-				(Boolean) W.config.get(ConfigC.commandEnabled_leave), BlockHuntCMD, new CMDleave(), "/BlockHunt <leave|l>");
-		CMDlist = new CommandManager("BlockHunt LIST", "BlockHunt", "list", "li", Permissions.list, ConfigC.help_list, (Boolean) W.config.get(ConfigC.commandEnabled_list),
+				(Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_leave), BlockHuntCMD, new CMDleave(), "/BlockHunt <leave|l>");
+		CMDlist = new CommandManager("BlockHunt LIST", "BlockHunt", "list", "li", Permissions.list, ConfigC.help_list, (Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_list),
 				BlockHuntCMD, new CMDlist(), "/BlockHunt <list|li>");
-		CMDshop = new CommandManager("BlockHunt SHOP", "BlockHunt", "shop", "sh", Permissions.shop, ConfigC.help_shop, (Boolean) W.config.get(ConfigC.commandEnabled_shop),
+		CMDshop = new CommandManager("BlockHunt SHOP", "BlockHunt", "shop", "sh", Permissions.shop, ConfigC.help_shop, (Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_shop),
 				BlockHuntCMD, new CMDshop(), "/BlockHunt <shop|sh>");
 		CMDstart = new CommandManager("BlockHunt START", "BlockHunt", "start", "go", Permissions.start, ConfigC.help_start,
-				(Boolean) W.config.get(ConfigC.commandEnabled_start), BlockHuntCMD, new CMDstart(), "/BlockHunt <start|go> <arenaname>");
-		CMDwand = new CommandManager("BlockHunt WAND", "BlockHunt", "wand", "w", Permissions.create, ConfigC.help_wand, (Boolean) W.config.get(ConfigC.commandEnabled_wand),
+				(Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_start), BlockHuntCMD, new CMDstart(), "/BlockHunt <start|go> <arenaname>");
+		CMDwand = new CommandManager("BlockHunt WAND", "BlockHunt", "wand", "w", Permissions.create, ConfigC.help_wand, (Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_wand),
 				BlockHuntCMD, new CMDwand(), "/BlockHunt <wand|w>");
 		CMDcreate = new CommandManager("BlockHunt CREATE", "BlockHunt", "create", "c", Permissions.create, ConfigC.help_create,
-				(Boolean) W.config.get(ConfigC.commandEnabled_create), BlockHuntCMD, new CMDcreate(), "/BlockHunt <create|c> <arenaname>");
-		CMDset = new CommandManager("BlockHunt SET", "BlockHunt", "set", "s", Permissions.set, ConfigC.help_set, (Boolean) W.config.get(ConfigC.commandEnabled_set),
+				(Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_create), BlockHuntCMD, new CMDcreate(), "/BlockHunt <create|c> <arenaname>");
+		CMDset = new CommandManager("BlockHunt SET", "BlockHunt", "set", "s", Permissions.set, ConfigC.help_set, (Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_set),
 				BlockHuntCMD, new CMDset(), "/BlockHunt <set|s> <arenaname>");
 		CMDsetwarp = new CommandManager("BlockHunt SETWARP", "BlockHunt", "setwarp", "sw", Permissions.setwarp, ConfigC.help_setwarp,
-				(Boolean) W.config.get(ConfigC.commandEnabled_setwarp), BlockHuntCMD, new CMDsetwarp(),
+				(Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_setwarp), BlockHuntCMD, new CMDsetwarp(),
 				"/BlockHunt <setwarp|sw> <lobby|hiders|seekers|spawn> <arenaname>");
 		CMDremove = new CommandManager("BlockHunt REMOVE", "BlockHunt", "remove", "delete", Permissions.remove, ConfigC.help_remove,
-				(Boolean) W.config.get(ConfigC.commandEnabled_remove), BlockHuntCMD, new CMDremove(), "/BlockHunt <remove|delete> <arenaname>");
+				(Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_remove), BlockHuntCMD, new CMDremove(), "/BlockHunt <remove|delete> <arenaname>");
 		CMDtokens = new CommandManager("BlockHunt TOKENS", "BlockHunt", "tokens", "t", Permissions.tokens, ConfigC.help_tokens,
-				(Boolean) W.config.get(ConfigC.commandEnabled_tokens), BlockHuntCMD, new CMDtokens(), "/BlockHunt <tokens|t> <set|add|take> <playername> <amount>");
+				(Boolean) MemoryStorage.config.get(ConfigC.commandEnabled_tokens), BlockHuntCMD, new CMDtokens(), "/BlockHunt <tokens|t> <set|add|take> <playername> <amount>");
 
 		if (!getServer().getPluginManager().isPluginEnabled("LibsDisguises")) {
 			MessageManager.broadcastFMessage(ConfigC.error_libsDisguisesNotInstalled);
@@ -191,7 +191,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
 
 		// Welcome to the massive game loop!!
 		getServer().getScheduler().runTaskTimer(this, () -> {
-            for (Arena arena : W.arenaList) {
+            for (Arena arena : MemoryStorage.arenaList) {
                 if (arena.gameState == ArenaState.WAITING) {
                     if (arena.playersInArena.size() >= arena.minPlayers) {
                         arena.gameState = ArenaState.STARTING;
@@ -230,13 +230,13 @@ public class BlockHunt extends JavaPlugin implements Listener {
 
                         for (int i = arena.amountSeekersOnStart; i > 0; i = i - 1) {
                             boolean loop = true;
-                            Player seeker = arena.playersInArena.get(W.random.nextInt(arena.playersInArena.size()));
+                            Player seeker = arena.playersInArena.get(MemoryStorage.random.nextInt(arena.playersInArena.size()));
 
                             for (Player playerCheck : arena.playersInArena) {
-                                if (W.choosenSeeker.get(playerCheck) != null) {
-                                    if (W.choosenSeeker.get(playerCheck)) {
+                                if (MemoryStorage.choosenSeeker.get(playerCheck) != null) {
+                                    if (MemoryStorage.choosenSeeker.get(playerCheck)) {
                                         seeker = playerCheck;
-                                        W.choosenSeeker.remove(playerCheck);
+                                        MemoryStorage.choosenSeeker.remove(playerCheck);
                                     } else {
                                         if (seeker.equals(playerCheck)) {
                                             i = i + 1;
@@ -254,7 +254,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
                                     seeker.getInventory().clear();
                                     seeker.updateInventory();
                                     seeker.setWalkSpeed(0.3F);
-                                    W.seekertime.put(seeker, arena.waitingTimeSeeker);
+                                    MemoryStorage.seekertime.put(seeker, arena.waitingTimeSeeker);
                                 } else {
                                     i = i + 1;
                                 }
@@ -265,11 +265,11 @@ public class BlockHunt extends JavaPlugin implements Listener {
                             if (!arena.seekers.contains(arenaPlayer)) {
                                 arenaPlayer.getInventory().clear();
                                 arenaPlayer.updateInventory();
-                                ItemStack block = arena.disguiseBlocks.get(W.random.nextInt(arena.disguiseBlocks.size()));
+                                ItemStack block = arena.disguiseBlocks.get(MemoryStorage.random.nextInt(arena.disguiseBlocks.size()));
 
-                                if (W.choosenBlock.get(arenaPlayer) != null) {
-                                    block = W.choosenBlock.get(arenaPlayer);
-                                    W.choosenBlock.remove(arenaPlayer);
+                                if (MemoryStorage.choosenBlock.get(arenaPlayer) != null) {
+                                    block = MemoryStorage.choosenBlock.get(arenaPlayer);
+                                    MemoryStorage.choosenBlock.remove(arenaPlayer);
                                 }
 
                                 MiscDisguise disguise = new MiscDisguise(DisguiseType.FALLING_BLOCK, block.getTypeId(), block.getDurability());
@@ -281,7 +281,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
                                 blockCount.setDurability(block.getDurability());
                                 arenaPlayer.getInventory().setItem(8, blockCount);
                                 arenaPlayer.getInventory().setHelmet(new ItemStack(block));
-                                W.pBlock.put(arenaPlayer, block);
+                                MemoryStorage.pBlock.put(arenaPlayer, block);
 
                                 if (block.getDurability() != 0) {
                                     MessageManager.sendFMessage(arenaPlayer, ConfigC.normal_ingameBlock,
@@ -311,11 +311,11 @@ public class BlockHunt extends JavaPlugin implements Listener {
                         player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
                     }
 
-                    if (W.seekertime.get(player) != null) {
-                        W.seekertime.put(player, W.seekertime.get(player) - 1);
-                        if (W.seekertime.get(player) <= 0) {
+                    if (MemoryStorage.seekertime.get(player) != null) {
+                        MemoryStorage.seekertime.put(player, MemoryStorage.seekertime.get(player) - 1);
+                        if (MemoryStorage.seekertime.get(player) <= 0) {
                             player.teleport(arena.hidersWarp);
-                            W.seekertime.remove(player);
+                            MemoryStorage.seekertime.remove(player);
                             ArenaHandler.sendFMessage(arena, ConfigC.normal_ingameSeekerSpawned, "playername-" + player.getName());
                         }
                     }
@@ -383,12 +383,12 @@ public class BlockHunt extends JavaPlugin implements Listener {
                     for (Player player : arena.playersInArena) {
                         if (!arena.seekers.contains(player)) {
                             Location pLoc = player.getLocation();
-                            Location moveLoc = W.moveLoc.get(player);
+                            Location moveLoc = MemoryStorage.moveLoc.get(player);
                             ItemStack block = player.getInventory().getItem(8);
 
                             if (block == null) {
-                                if (W.pBlock.get(player) != null) {
-                                    block = W.pBlock.get(player);
+                                if (MemoryStorage.pBlock.get(player) != null) {
+                                    block = MemoryStorage.pBlock.get(player);
                                     player.getInventory().setItem(8, block);
                                     player.updateInventory();
                                 }
@@ -403,9 +403,9 @@ public class BlockHunt extends JavaPlugin implements Listener {
                                         if (pBlock.getType().equals(Material.AIR) || pBlock.getType().equals(Material.WATER)
                                                 || pBlock.getType().equals(Material.STATIONARY_WATER)) {
                                             if (pBlock.getType().equals(Material.WATER) || pBlock.getType().equals(Material.STATIONARY_WATER)) {
-                                                W.hiddenLocWater.put(player, true);
+                                                MemoryStorage.hiddenLocWater.put(player, true);
                                             } else {
-                                                W.hiddenLocWater.put(player, false);
+                                                MemoryStorage.hiddenLocWater.put(player, false);
                                             }
                                             if (DisguiseAPI.isDisguised(player)) {
                                                 DisguiseAPI.undisguiseToAll(player);
@@ -418,7 +418,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
 
                                                 block.addUnsafeEnchantment(Enchantment.DURABILITY, 10);
                                                 player.playSound(pLoc, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
-                                                W.hiddenLoc.put(player, moveLoc);
+                                                MemoryStorage.hiddenLoc.put(player, moveLoc);
                                                 if (block.getDurability() != 0) {
                                                     MessageManager.sendFMessage(
                                                             player,
@@ -462,8 +462,9 @@ public class BlockHunt extends JavaPlugin implements Listener {
 	}
 
 	public void onDisable() {
-		for (Arena arena : W.arenaList) {
-			ArenaHandler.stopArena(arena);
+		for (Arena arena : MemoryStorage.arenaList) {
+		    String cause = "[BlockHunt] Arena " + arena.arenaName + " has been stopped";
+			ArenaHandler.stopArena(arena, cause, ConfigC.warning_arenaStopped);
 		}
 
 		MessageManager.sendFMessage(null, ConfigC.log_disabledPlugin, "name-" + BlockHunt.pdfFile.getName(), "version-" + BlockHunt.pdfFile.getVersion(), "autors-"
@@ -498,7 +499,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
 			player = (Player) sender;
 		}
 
-		for (CommandManager command : W.commands) {
+		for (CommandManager command : MemoryStorage.commands) {
 			String[] argsSplit = null;
 			String[] argsSplitAlias = null;
 
@@ -528,7 +529,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
 				if (equals) {
 					if (PermissionsManager.hasPerm(player, command.permission, true)) {
 						if (command.enabled) {
-							command.CMD.exectue(player, cmd, label, args);
+							command.CMD.execute(player, cmd, label, args);
 						} else {
 							MessageManager.sendFMessage(player, ConfigC.error_commandNotEnabled);
 						}
@@ -538,15 +539,14 @@ public class BlockHunt extends JavaPlugin implements Listener {
 				}
 			}
 		}
-
-		CMDnotfound.exectue(player, cmd, label, args);
+		new CMDnotfound().execute(player,cmd,label, args);;
 		return true;
 	}
 
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
 
-		for (CommandManager command : W.commands) {
+		for (CommandManager command : MemoryStorage.commands) {
 			if (cmd.getName().equalsIgnoreCase(command.label)) {
 				if (args.length == 1) {
 					return command.mainTABlist;

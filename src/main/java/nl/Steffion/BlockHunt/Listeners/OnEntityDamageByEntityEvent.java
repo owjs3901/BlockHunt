@@ -9,7 +9,7 @@ import nl.Steffion.BlockHunt.Arena;
 import nl.Steffion.BlockHunt.Arena.ArenaState;
 import nl.Steffion.BlockHunt.ArenaHandler;
 import nl.Steffion.BlockHunt.ConfigC;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
 
 import org.apache.commons.lang.StringUtils;
@@ -26,7 +26,6 @@ import org.bukkit.projectiles.ProjectileSource;
 
 public class OnEntityDamageByEntityEvent implements Listener {
 
-	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent event) {
 		if (!(event.getEntity() instanceof Player) || event.getEntity() == null) {
@@ -58,7 +57,7 @@ public class OnEntityDamageByEntityEvent implements Listener {
 			return;
 		}
 
-		for (Arena arena : W.arenaList) {
+		for (Arena arena : MemoryStorage.arenaList) {
 			if (arena.playersInArena.contains(player)) {
 				if (arena.gameState == ArenaState.WAITING || arena.gameState == ArenaState.STARTING) {
 					// Always cancel damage when players are waiting
@@ -96,27 +95,27 @@ public class OnEntityDamageByEntityEvent implements Listener {
 						event.setCancelled(true);
 
 						DisguiseAPI.undisguiseToAll(player);
-						W.pBlock.remove(player);
+						MemoryStorage.pBlock.remove(player);
 
 						if (!arena.seekers.contains(player)) {
-							if (W.shop.getFile().get(damager.getName() + ".tokens") == null) {
-								W.shop.getFile().set(damager.getName() + ".tokens", 0);
-								W.shop.save();
+							if (MemoryStorage.shop.getFile().get(damager.getName() + ".tokens") == null) {
+								MemoryStorage.shop.getFile().set(damager.getName() + ".tokens", 0);
+								MemoryStorage.shop.save();
 							}
-							int damagerTokens = W.shop.getFile().getInt(damager.getName() + ".tokens");
-							W.shop.getFile().set(damager.getName() + ".tokens", damagerTokens + arena.killTokens);
-							W.shop.save();
+							int damagerTokens = MemoryStorage.shop.getFile().getInt(damager.getName() + ".tokens");
+							MemoryStorage.shop.getFile().set(damager.getName() + ".tokens", damagerTokens + arena.killTokens);
+							MemoryStorage.shop.save();
 
 							MessageManager.sendFMessage(damager, ConfigC.normal_addedToken, "amount-" + arena.killTokens);
 
-							if (W.shop.getFile().get(player.getName() + ".tokens") == null) {
-								W.shop.getFile().set(player.getName() + ".tokens", 0);
-								W.shop.save();
+							if (MemoryStorage.shop.getFile().get(player.getName() + ".tokens") == null) {
+								MemoryStorage.shop.getFile().set(player.getName() + ".tokens", 0);
+								MemoryStorage.shop.save();
 							}
-							int playerTokens = W.shop.getFile().getInt(player.getName() + ".tokens");
+							int playerTokens = MemoryStorage.shop.getFile().getInt(player.getName() + ".tokens");
 							float addingTokens = ((float) arena.hidersTokenWin - (((float) arena.timer / (float) arena.gameTime) * (float) arena.hidersTokenWin));
-							W.shop.getFile().set(player.getName() + ".tokens", playerTokens + (int) addingTokens);
-							W.shop.save();
+							MemoryStorage.shop.getFile().set(player.getName() + ".tokens", playerTokens + (int) addingTokens);
+							MemoryStorage.shop.save();
 
 							MessageManager.sendFMessage(player, ConfigC.normal_addedToken, "amount-" + (int) addingTokens);
 
@@ -147,7 +146,7 @@ public class OnEntityDamageByEntityEvent implements Listener {
 							ArenaHandler.seekersWin(arena);
 						} else {
 							DisguiseAPI.undisguiseToAll(player);
-							W.seekertime.put(player, arena.waitingTimeSeeker);
+							MemoryStorage.seekertime.put(player, arena.waitingTimeSeeker);
 							player.teleport(arena.seekersWarp);
 							player.setGameMode(GameMode.SURVIVAL);
 							player.setWalkSpeed(0.3F);

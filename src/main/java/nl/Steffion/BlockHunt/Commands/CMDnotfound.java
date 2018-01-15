@@ -16,10 +16,10 @@ import nl.Steffion.BlockHunt.Managers.MessageManager;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-public class CMDnotfound {
+public class CMDnotfound extends DefaultCMD {
 
-
-	public static boolean exectue(Player player, Command cmd, String label, String[] args) {
+	@Override
+	public boolean execute(Player player, Command cmd, String label, String[] args) {
 		MessageManager.sendFMessage(player, ConfigC.error_commandNotFound);
 		return true;
 	}

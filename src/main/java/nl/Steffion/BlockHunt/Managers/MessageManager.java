@@ -1,7 +1,7 @@
 package nl.Steffion.BlockHunt.Managers;
 
 import nl.Steffion.BlockHunt.ConfigC;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -165,27 +165,27 @@ public class MessageManager {
 	public static class CType {
 
 		public static String NORMAL() {
-			return (String) W.config.get(ConfigC.chat_normal);
+			return (String) MemoryStorage.config.get(ConfigC.chat_normal);
 		}
 
 		public static String WARNING() {
-			return (String) W.config.get(ConfigC.chat_warning);
+			return (String) MemoryStorage.config.get(ConfigC.chat_warning);
 		}
 
 		public static String ERROR() {
-			return (String) W.config.get(ConfigC.chat_error);
+			return (String) MemoryStorage.config.get(ConfigC.chat_error);
 		}
 
 		public static String ARG() {
-			return (String) W.config.get(ConfigC.chat_arg);
+			return (String) MemoryStorage.config.get(ConfigC.chat_arg);
 		}
 
 		public static String HEADER() {
-			return (String) W.config.get(ConfigC.chat_header);
+			return (String) MemoryStorage.config.get(ConfigC.chat_header);
 		}
 
 		public static String TAG() {
-			return (String)W.config.get(ConfigC.chat_header) +  W.config.get(ConfigC.chat_tag) + W.config.get(ConfigC.chat_normal);
+			return (String) MemoryStorage.config.get(ConfigC.chat_header) +  MemoryStorage.config.get(ConfigC.chat_tag) + MemoryStorage.config.get(ConfigC.chat_normal);
 		}
 	}
 }

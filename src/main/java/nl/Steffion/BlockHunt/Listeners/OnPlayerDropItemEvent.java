@@ -1,7 +1,7 @@
 package nl.Steffion.BlockHunt.Listeners;
 
 import nl.Steffion.BlockHunt.Arena;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +15,7 @@ public class OnPlayerDropItemEvent implements Listener {
 	public void onPlayerDropItemEvent(PlayerDropItemEvent event) {
 		Player player = event.getPlayer();
 
-		for (Arena arena : W.arenaList) {
+		for (Arena arena : MemoryStorage.arenaList) {
 			if (arena.playersInArena.contains(player)) {
 				event.setCancelled(true);
 			}

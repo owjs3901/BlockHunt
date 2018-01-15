@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.Steffion.BlockHunt.ConfigC;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
 
 import org.bukkit.Material;
@@ -17,13 +17,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class CMDwand extends DefaultCMD {
 
 	@Override
-	public boolean exectue(Player player, Command cmd, String label, String[] args) {
+	public boolean execute(Player player, Command cmd, String label, String[] args) {
 		if (player != null) {
-			ItemStack wand = new ItemStack(Material.getMaterial((String) W.config.get(ConfigC.wandIDname)));
+			ItemStack wand = new ItemStack(Material.getMaterial((String) MemoryStorage.config.get(ConfigC.wandIDname)));
 			ItemMeta im = wand.getItemMeta();
-			im.setDisplayName(MessageManager.replaceAll((String) W.config.get(ConfigC.wandName)));
-			W.config.load();
-			List<String> lores = W.config.getFile().getStringList(ConfigC.wandDescription.location);
+			im.setDisplayName(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.wandName)));
+			MemoryStorage.config.load();
+			List<String> lores = MemoryStorage.config.getFile().getStringList(ConfigC.wandDescription.location);
 			List<String> lores2 = new ArrayList<>();
 			for (String lore : lores) {
 				lores2.add(MessageManager.replaceAll(lore));

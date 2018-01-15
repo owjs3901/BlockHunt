@@ -13,7 +13,7 @@ package nl.Steffion.BlockHunt.Commands;
 import nl.Steffion.BlockHunt.Arena;
 import nl.Steffion.BlockHunt.ArenaHandler;
 import nl.Steffion.BlockHunt.ConfigC;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Managers.ConfigManager;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
 
@@ -24,16 +24,17 @@ public class CMDreload extends DefaultCMD {
 
 
 	@Override
-	public boolean exectue(Player player, Command cmd, String label, String[] args) {
+	public boolean execute(Player player, Command cmd, String label, String[] args) {
 		ConfigManager.newFiles();
 
-		W.config.load();
-		W.messages.load();
-		W.arenas.load();
-		W.signs.load();
-		W.shop.load();
-		for (Arena arena : W.arenaList) {
-			ArenaHandler.stopArena(arena);
+		MemoryStorage.config.load();
+		MemoryStorage.messages.load();
+		MemoryStorage.arenas.load();
+		MemoryStorage.signs.load();
+		MemoryStorage.shop.load();
+		for (Arena arena : MemoryStorage.arenaList) {
+			String cause = "[BlockHunt] Arena " + arena.arenaName + " has been stopped";
+			ArenaHandler.stopArena(arena, cause, ConfigC.warning_arenaStopped);
 		}
 
 		ArenaHandler.loadArenas();

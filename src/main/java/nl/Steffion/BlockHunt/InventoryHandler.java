@@ -20,7 +20,7 @@ public class InventoryHandler {
 	public static void openPanel(Player player, String arenaname) {
 
 		Arena arena = null;
-		for (Arena arena2 : W.arenaList) {
+		for (Arena arena2 : MemoryStorage.arenaList) {
 			if (arena2.arenaName.equalsIgnoreCase(arenaname)) {
 				arena = arena2;
 			}
@@ -129,7 +129,7 @@ public class InventoryHandler {
 	public static void updownButton(Inventory panel, Arena arena, ArenaType at, String option, String addremove, ItemStack UP, ItemStack BUTTON, ItemStack DOWN, int up,
 			int button, int down) {
 		ItemMeta UP_IM = UP.getItemMeta();
-		UP_IM.setDisplayName(MessageManager.replaceAll((String) W.messages.get(ConfigC.button_add), "1-" + addremove, "2-" + option));
+		UP_IM.setDisplayName(MessageManager.replaceAll((String) MemoryStorage.messages.get(ConfigC.button_add), "1-" + addremove, "2-" + option));
 		UP.setItemMeta(UP_IM);
 
 		int setting = 0;
@@ -170,11 +170,11 @@ public class InventoryHandler {
 		}
 
 		ItemMeta BUTTON_IM = BUTTON.getItemMeta();
-		BUTTON_IM.setDisplayName(MessageManager.replaceAll((String) W.messages.get(ConfigC.button_setting), "1-" + option, "2-" + setting));
+		BUTTON_IM.setDisplayName(MessageManager.replaceAll((String) MemoryStorage.messages.get(ConfigC.button_setting), "1-" + option, "2-" + setting));
 		BUTTON.setItemMeta(BUTTON_IM);
 
 		ItemMeta DOWN_IM = DOWN.getItemMeta();
-		DOWN_IM.setDisplayName(MessageManager.replaceAll((String) W.messages.get(ConfigC.button_remove), "1-" + addremove, "2-" + option));
+		DOWN_IM.setDisplayName(MessageManager.replaceAll((String) MemoryStorage.messages.get(ConfigC.button_remove), "1-" + addremove, "2-" + option));
 		DOWN.setItemMeta(DOWN_IM);
 
 		panel.setItem(up, UP);
@@ -203,12 +203,12 @@ public class InventoryHandler {
 	}
 
 	public static void openShop(Player player) {
-		Inventory shop = Bukkit.createInventory(null, 9, MessageManager.replaceAll("\u00A7r" + W.config.get(ConfigC.shop_title)));
-		if (W.shop.getFile().get(player.getName() + ".tokens") == null) {
-			W.shop.getFile().set(player.getName() + ".tokens", 0);
-			W.shop.save();
+		Inventory shop = Bukkit.createInventory(null, 9, MessageManager.replaceAll("\u00A7r" + MemoryStorage.config.get(ConfigC.shop_title)));
+		if (MemoryStorage.shop.getFile().get(player.getName() + ".tokens") == null) {
+			MemoryStorage.shop.getFile().set(player.getName() + ".tokens", 0);
+			MemoryStorage.shop.save();
 		}
-		int playerTokens = W.shop.getFile().getInt(player.getName() + ".tokens");
+		int playerTokens = MemoryStorage.shop.getFile().getInt(player.getName() + ".tokens");
 		List<String> lores = new ArrayList<>();
 		List<String> lores2 = new ArrayList<>();
 
@@ -217,40 +217,40 @@ public class InventoryHandler {
 		shopTokens_IM.setDisplayName(MessageManager.replaceAll("%N&lTokens: %A" + playerTokens));
 		shopTokens.setItemMeta(shopTokens_IM);
 
-		ItemStack shopBlockChooser = new ItemStack(Material.getMaterial((String) W.config.get(ConfigC.shop_blockChooserv1IDname)), 1);
+		ItemStack shopBlockChooser = new ItemStack(Material.getMaterial((String) MemoryStorage.config.get(ConfigC.shop_blockChooserv1IDname)), 1);
 		ItemMeta shopBlockChooser_IM = shopBlockChooser.getItemMeta();
-		shopBlockChooser_IM.setDisplayName(MessageManager.replaceAll((String) W.config.get(ConfigC.shop_blockChooserv1Name)));
-		lores = W.config.getFile().getStringList(ConfigC.shop_blockChooserv1Description.location);
+		shopBlockChooser_IM.setDisplayName(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_blockChooserv1Name)));
+		lores = MemoryStorage.config.getFile().getStringList(ConfigC.shop_blockChooserv1Description.location);
 		lores2 = new ArrayList<>();
 		for (String lore : lores) {
 			lores2.add(MessageManager.replaceAll(lore));
 		}
 
-		lores2.add(MessageManager.replaceAll((String) W.config.get(ConfigC.shop_price), "amount-" + W.config.get(ConfigC.shop_blockChooserv1Price)));
+		lores2.add(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_price), "amount-" + MemoryStorage.config.get(ConfigC.shop_blockChooserv1Price)));
 
 		shopBlockChooser_IM.setLore(lores2);
 		shopBlockChooser.setItemMeta(shopBlockChooser_IM);
 
-		ItemStack shopBlockHuntPass = new ItemStack(Material.getMaterial((String) W.config.get(ConfigC.shop_BlockHuntPassv2IDName)), 1);
+		ItemStack shopBlockHuntPass = new ItemStack(Material.getMaterial((String) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2IDName)), 1);
 		ItemMeta shopBlockHuntPass_IM = shopBlockHuntPass.getItemMeta();
-		shopBlockHuntPass_IM.setDisplayName(MessageManager.replaceAll((String) W.config.get(ConfigC.shop_BlockHuntPassv2Name)));
-		lores = W.config.getFile().getStringList(ConfigC.shop_BlockHuntPassv2Description.location);
+		shopBlockHuntPass_IM.setDisplayName(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Name)));
+		lores = MemoryStorage.config.getFile().getStringList(ConfigC.shop_BlockHuntPassv2Description.location);
 		lores2 = new ArrayList<>();
 		for (String lore : lores) {
 			lores2.add(MessageManager.replaceAll(lore));
 		}
 
-		lores2.add(MessageManager.replaceAll((String) W.config.get(ConfigC.shop_price), "amount-" + W.config.get(ConfigC.shop_BlockHuntPassv2Price)));
+		lores2.add(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_price), "amount-" + MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Price)));
 
 		shopBlockHuntPass_IM.setLore(lores2);
 		shopBlockHuntPass.setItemMeta(shopBlockHuntPass_IM);
 
 		shop.setItem(0, shopTokens);
-		if ((Boolean) W.config.get(ConfigC.shop_blockChooserv1Enabled)
-				&& (W.shop.getFile().get(player.getName() + ".blockchooser") == null && !PermissionsManager.hasPerm(player, Permissions.shopblockchooser, false))) {
+		if ((Boolean) MemoryStorage.config.get(ConfigC.shop_blockChooserv1Enabled)
+				&& (MemoryStorage.shop.getFile().get(player.getName() + ".blockchooser") == null && !PermissionsManager.hasPerm(player, Permissions.shopblockchooser, false))) {
 			shop.setItem(1, shopBlockChooser);
 		}
-		if ((Boolean) W.config.get(ConfigC.shop_BlockHuntPassv2Enabled)) {
+		if ((Boolean) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Enabled)) {
 			shop.setItem(2, shopBlockHuntPass);
 		}
 		player.openInventory(shop);

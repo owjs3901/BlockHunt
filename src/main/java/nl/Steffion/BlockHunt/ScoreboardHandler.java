@@ -12,7 +12,7 @@ import org.bukkit.scoreboard.Scoreboard;
 
 public class ScoreboardHandler {
 	public static void createScoreboard(Arena arena) {
-		if ((Boolean) W.config.get(ConfigC.scoreboard_enabled)) {
+		if ((Boolean) MemoryStorage.config.get(ConfigC.scoreboard_enabled)) {
 			Scoreboard board = arena.scoreboard;
 			if (board.getObjective(arena.arenaName) != null) {
 				updateScoreboard(arena);
@@ -22,17 +22,17 @@ public class ScoreboardHandler {
 			Objective object = board.registerNewObjective(BlockHunt.cutString(arena.arenaName, 32), "dummy");
 
 			object.setDisplaySlot(DisplaySlot.SIDEBAR);
-			object.setDisplayName(BlockHunt.cutString(MessageManager.replaceAll((String) W.config.get(ConfigC.scoreboard_title)), 32));
+			object.setDisplayName(BlockHunt.cutString(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.scoreboard_title)), 32));
 			
-			String temp = BlockHunt.cutString(MessageManager.replaceAll((String) W.config.get(ConfigC.scoreboard_timeleft)), 32);
+			String temp = BlockHunt.cutString(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.scoreboard_timeleft)), 32);
 			Score timeleft = object.getScore(temp);
 			timeleft.setScore(arena.timer);
 			
-			temp = BlockHunt.cutString(MessageManager.replaceAll((String) W.config.get(ConfigC.scoreboard_seekers)), 32);
+			temp = BlockHunt.cutString(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.scoreboard_seekers)), 32);
 			Score seekers = object.getScore(temp);
 			seekers.setScore(arena.seekers.size());
 			
-			temp = BlockHunt.cutString(MessageManager.replaceAll((String) W.config.get(ConfigC.scoreboard_hiders)), 32);
+			temp = BlockHunt.cutString(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.scoreboard_hiders)), 32);
 			Score hiders = object.getScore(temp);
 			hiders.setScore(arena.playersInArena.size() - arena.seekers.size());
 			
@@ -49,20 +49,20 @@ public class ScoreboardHandler {
 	}
 
 	public static void updateScoreboard(Arena arena) {
-		if ((Boolean) W.config.get(ConfigC.scoreboard_enabled)) {
+		if ((Boolean) MemoryStorage.config.get(ConfigC.scoreboard_enabled)) {
 			Scoreboard board = arena.scoreboard;
 			Objective object = board.getObjective(DisplaySlot.SIDEBAR);
-			object.setDisplayName(BlockHunt.cutString(MessageManager.replaceAll((String) W.config.get(ConfigC.scoreboard_title)), 32));
+			object.setDisplayName(BlockHunt.cutString(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.scoreboard_title)), 32));
 			
-			String temp = BlockHunt.cutString(MessageManager.replaceAll((String) W.config.get(ConfigC.scoreboard_timeleft)), 32);
+			String temp = BlockHunt.cutString(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.scoreboard_timeleft)), 32);
 			Score timeleft = object.getScore(temp);
 			timeleft.setScore(arena.timer);
 			
-			temp = BlockHunt.cutString(MessageManager.replaceAll((String) W.config.get(ConfigC.scoreboard_seekers)), 32);
+			temp = BlockHunt.cutString(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.scoreboard_seekers)), 32);
 			Score seekers = object.getScore(temp);
 			seekers.setScore(arena.seekers.size());
 			
-			temp = BlockHunt.cutString(MessageManager.replaceAll((String) W.config.get(ConfigC.scoreboard_hiders)), 32);
+			temp = BlockHunt.cutString(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.scoreboard_hiders)), 32);
 			Score hiders = object.getScore(temp);
 			hiders.setScore(arena.playersInArena.size() - arena.seekers.size());
 			

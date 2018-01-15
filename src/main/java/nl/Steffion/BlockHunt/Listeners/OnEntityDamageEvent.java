@@ -2,7 +2,7 @@ package nl.Steffion.BlockHunt.Listeners;
 
 import nl.Steffion.BlockHunt.Arena;
 import nl.Steffion.BlockHunt.ArenaHandler;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -22,7 +22,7 @@ public class OnEntityDamageEvent implements Listener {
 		Entity ent = event.getEntity();
 		if (ent instanceof Player) {
 			Player player = (Player) event.getEntity();
-			for (Arena arena : W.arenaList) {
+			for (Arena arena : MemoryStorage.arenaList) {
 				if (arena.playersInArena.contains(player)) {
 					DamageCause cause = event.getCause();
 					switch (cause) {

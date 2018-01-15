@@ -14,7 +14,7 @@ import java.io.File;
 
 import nl.Steffion.BlockHunt.BlockHunt;
 import nl.Steffion.BlockHunt.ConfigC;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.MemoryStorage;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -70,11 +70,11 @@ public class ConfigManager {
 	 */
 	public static void newFiles() {
 		ConfigManager.setDefaults();
-		for (String fileName : W.newFiles) {
-			MessageManager.sendMessage(null, "%TAG%WCouldn't find '%A%fileName%.yml%W' creating new one.", "fileName-" + fileName);
+		for (String fileName : MemoryStorage.newFiles) {
+			MessageManager.sendMessage(null, "%TAG%WCouldn't find '%A%fileName%.yml%MemoryStorage' creating new one.", "fileName-" + fileName);
 		}
 
-		W.newFiles.clear();
+		MemoryStorage.newFiles.clear();
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class ConfigManager {
 				this.file.getParentFile().mkdirs();
 				this.file.createNewFile();
 				if(file.exists()) {
-					W.newFiles.add(this.fileName);
+					MemoryStorage.newFiles.add(this.fileName);
 				}
 
 			} catch (Exception e) {

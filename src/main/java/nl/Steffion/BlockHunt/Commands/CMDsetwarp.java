@@ -1,12 +1,10 @@
 package nl.Steffion.BlockHunt.Commands;
 
-import nl.Steffion.BlockHunt.Arena;
-import nl.Steffion.BlockHunt.ArenaHandler;
-import nl.Steffion.BlockHunt.BlockHunt;
-import nl.Steffion.BlockHunt.ConfigC;
-import nl.Steffion.BlockHunt.W;
+import nl.Steffion.BlockHunt.*;
+import nl.Steffion.BlockHunt.MemoryStorage;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
 
+import nl.Steffion.BlockHunt.Serializables.LocationSerializable;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -14,7 +12,7 @@ import org.bukkit.entity.Player;
 public class CMDsetwarp extends DefaultCMD {
 
 	@Override
-	public boolean exectue(Player player, Command cmd, String label, String[] args) {
+	public boolean execute(Player player, Command cmd, String label, String[] args) {
 		if (player != null) {
 			if (args.length <= 2) {
 				MessageManager.sendFMessage(player, ConfigC.error_notEnoughArguments, "syntax-" + BlockHunt.CMDsetwarp.usage);
@@ -23,7 +21,7 @@ public class CMDsetwarp extends DefaultCMD {
 				String warpname = args[1];
 
 				Arena arena = null;
-				for (Arena arena2 : W.arenaList) {
+				for (Arena arena2 : MemoryStorage.arenaList) {
 					if (arena2.arenaName.equalsIgnoreCase(arenaname)) {
 						arena = arena2;
 					}
@@ -31,19 +29,19 @@ public class CMDsetwarp extends DefaultCMD {
 				if (arena != null) {
 					Location loc = player.getLocation();
 					if (warpname.equalsIgnoreCase("lobby")) {
-						arena.lobbyWarp = loc;
+						arena.lobbyWarp = new LocationSerializable(loc);
 						save(arena);
 						MessageManager.sendFMessage(player, ConfigC.normal_setwarpWarpSet, "warp-" + warpname);
 					} else if (warpname.equalsIgnoreCase("hiders")) {
-						arena.hidersWarp = loc;
+						arena.hidersWarp = new LocationSerializable(loc);
 						save(arena);
 						MessageManager.sendFMessage(player, ConfigC.normal_setwarpWarpSet, "warp-" + warpname);
 					} else if (warpname.equalsIgnoreCase("seekers")) {
-						arena.seekersWarp = loc;
+						arena.seekersWarp = new LocationSerializable(loc);
 						save(arena);
 						MessageManager.sendFMessage(player, ConfigC.normal_setwarpWarpSet, "warp-" + warpname);
 					} else if (warpname.equalsIgnoreCase("spawn")) {
-						arena.spawnWarp = loc;
+						arena.spawnWarp = new LocationSerializable(loc);
 						save(arena);
 						MessageManager.sendFMessage(player, ConfigC.normal_setwarpWarpSet, "warp-" + warpname);
 					} else {
@@ -60,8 +58,8 @@ public class CMDsetwarp extends DefaultCMD {
 	}
 
 	public void save(Arena arena) {
-		W.arenas.getFile().set(arena.arenaName, arena);
-		W.arenas.save();
+		MemoryStorage.arenas.getFile().set(arena.arenaName, arena);
+		MemoryStorage.arenas.save();
 		ArenaHandler.loadArenas();
 	}
 }
