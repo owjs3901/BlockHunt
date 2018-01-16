@@ -2,27 +2,28 @@ BlockHunt
 ====
 # ![Thanks to ColeRule for making this awesome banner!](http://g2f.nl/0qheg35 "Thanks to ColeRule for making this awesome banner!") 
 
-##Introduction
+## Introduction
 Hide and seek is a popular game mode on Minecraft that allows you to hide as blocks and disguise as normal props from seekers. This plugin allows you to do that but with a lot more features added on such as: shops, stats etc...
 
 This plugin has been heavily inspired from the gamemode "PropHunt", from the game, "Garry's Mod".
 
-
 **Download and try this plugin out for yourself!**
 
-##Downloads
- | Branch | Plugin version | Compatiable Minecraft version | Build status | Download |
- | --- :|:---:|:---:| --- | --- |
- | **Release (master)** | **v0.2.1** | **v1.12.2** | [![Build Status](https://jenkins.addstar.com.au/job/Blockhunt/badge/icon)](https://jenkins.addstar.com.au/job/Blockhunt/) | [DOWNLOAD](https://jenkins.addstar.com.au/job/Blockhunt/lastSuccessfulBuild/artifact/target/) |
+### Downloads
 
-### This plugin requires you to download and install two addinonal plugins! ([Lib's Disguises](https://www.spigotmc.org/resources/libs-disguises.81/) and [ProtocolLib](http://dev.bukkit.org/bukkit-plugins/protocollib/))
+| Branch | Plugin version | Compatiable Minecraft version | Build status | Download |
+| ---    | ---            | ---                           | ---          | ---      |
+| Release| **v0.2.1**     | **v1.12.2**                   | [![Build Status](https://jenkins.addstar.com.au/job/Blockhunt/badge/icon)] | [DOWNLOAD](https://jenkins.addstar.com.au/job/Blockhunt/lastSuccessfulBuild/artifact/target/) |
 
-##Support
+#### This plugin requires you to download and install two addinonal plugins! ([Lib's Disguises](https://www.spigotmc.org/resources/libs-disguises.81/) and [ProtocolLib](http://dev.bukkit.org/bukkit-plugins/protocollib/))
+
+### Support
+
  |Method|Link|
  | --- | --- |
  | **Issues/Tickets on GitHub** | [Click Here](https://github.com/AddstarMC/BlockHunt/issues/) |
 
-##Features
+### Features
 * Custom wand for selection arena.
 * Multiple arenas.
 * **Join/Leave signs!**
