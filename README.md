@@ -11,16 +11,16 @@ This plugin has been heavily inspired from the gamemode "PropHunt", from the gam
 **Download and try this plugin out for yourself!**
 
 ##Downloads
-|Branch|Plugin version|Compatiable Minecraft version|Build status|Download|
-|:--|:--|:--|:--|:--|
-|**Release (master)**|**v0.2.1**|**v1.12.2**|[![Build Status](https://jenkins.addstar.com.au/job/Blockhunt/badge/icon)](https://jenkins.addstar.com.au/job/Blockhunt/)|[DOWNLOAD](https://jenkins.addstar.com.au/job/Blockhunt/lastSuccessfulBuild/artifact/target/)|
+ | Branch | Plugin version | Compatiable Minecraft version | Build status | Download |
+ | --- :|:---:|:---:| --- | --- |
+ | **Release (master)** | **v0.2.1** | **v1.12.2** | [![Build Status](https://jenkins.addstar.com.au/job/Blockhunt/badge/icon)](https://jenkins.addstar.com.au/job/Blockhunt/) | [DOWNLOAD](https://jenkins.addstar.com.au/job/Blockhunt/lastSuccessfulBuild/artifact/target/) |
 
 ### This plugin requires you to download and install two addinonal plugins! ([Lib's Disguises](https://www.spigotmc.org/resources/libs-disguises.81/) and [ProtocolLib](http://dev.bukkit.org/bukkit-plugins/protocollib/))
 
 ##Support
-||Link|
-|:--|:--|
-|**Issues/Tickets on GitHub**|[Click Here](https://github.com/AddstarMC/BlockHunt/issues/)|
+ |Method|Link|
+ | --- | --- |
+ | **Issues/Tickets on GitHub** | [Click Here](https://github.com/AddstarMC/BlockHunt/issues/) |
 
 ##Features
 * Custom wand for selection arena.
