@@ -38,14 +38,14 @@ public class ArenaHandler {
 
 	public static void sendMessage(Arena arena, String message, String... vars) {
 		for (Player player : arena.playersInArena) {
-			String pMessage = message.replaceAll("%player%", player.getName());
+			String pMessage = message.replaceAll("%player%", player.getDisplayName());
 			player.sendMessage(MessageM.replaceAll(pMessage, vars));
 		}
 	}
 
 	public static void sendFMessage(Arena arena, ConfigC location, String... vars) {
 		for (Player player : arena.playersInArena) {
-			String pMessage = location.config.getFile().get(location.location).toString().replaceAll("%player%", player.getName());
+			String pMessage = location.config.getFile().get(location.location).toString().replaceAll("%player%", player.getDisplayName());
 			player.sendMessage(MessageM.replaceAll(pMessage, vars));
 		}
 	}
@@ -277,13 +277,8 @@ public class ArenaHandler {
 
 					// Fix for client not showing players after they join
 					for (Player otherplayer : arena.playersInArena) {
-						if (otherplayer.canSee(player))
-							otherplayer.showPlayer(player); // Make new player
-															// visible to others
-						if (player.canSee(otherplayer))
-							player.showPlayer(otherplayer); // Make other
-															// players visible
-															// to new player
+						otherplayer.showPlayer(player); 
+						player.showPlayer(otherplayer); 
 					}
 				}
 			}
@@ -362,7 +357,7 @@ public class ArenaHandler {
 
 				if (arena.seekersWinCommands != null) {
 					for (String command : arena.seekersWinCommands) {
-						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("%player%", player.getName()));
+						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("%player%", player.getDisplayName()));
 					}
 
 					if (W.shop.getFile().get(player.getName() + ".tokens") == null) {
@@ -414,7 +409,7 @@ public class ArenaHandler {
 
 				if (arena.hidersWinCommands != null) {
 					for (String command : arena.hidersWinCommands) {
-						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("%player%", player.getName()));
+						Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("%player%", player.getDisplayName()));
 					}
 
 					if (W.shop.getFile().get(player.getName() + ".tokens") == null) {

@@ -35,7 +35,7 @@ public class MessageM {
 		if (player == null) {
 			Bukkit.getConsoleSender().sendMessage(MessageM.replaceAll(message.replaceAll("%player%", "Console"), vars));
 		} else {
-			player.sendMessage(MessageM.replaceAll(message.replaceAll("%player%", player.getName()), vars));
+			player.sendMessage(MessageM.replaceAll(message.replaceAll("%player%", player.getDisplayName()), vars));
 		}
 	}
 
@@ -56,7 +56,7 @@ public class MessageM {
 			Bukkit.getConsoleSender().sendMessage(
 					MessageM.replaceAll(location.config.getFile().get(location.location).toString().replaceAll("%player%", "Console"), vars));
 		} else {
-			player.sendMessage(MessageM.replaceAll(location.config.getFile().get(location.location).toString().replaceAll("%player%", player.getName()), vars));
+			player.sendMessage(MessageM.replaceAll(location.config.getFile().get(location.location).toString().replaceAll("%player%", player.getDisplayName()), vars));
 		}
 	}
 
@@ -74,7 +74,7 @@ public class MessageM {
 		for (Player player : Bukkit.getOnlinePlayers()) {
 			// String pMessage = message.replaceAll("%player%",
 			// player.getName());
-			player.sendMessage(MessageM.replaceAll(message.replaceAll("%player%", player.getName()), vars));
+			player.sendMessage(MessageM.replaceAll(message.replaceAll("%player%", player.getDisplayName()), vars));
 		}
 		// message = message.replaceAll("%player%", "Console");
 		Bukkit.getConsoleSender().sendMessage(MessageM.replaceAll(message.replaceAll("%player%", "Console"), vars));
@@ -95,7 +95,7 @@ public class MessageM {
 			// String pMessage =
 			// location.config.getFile().get(location.location)
 			// .toString().replaceAll("%player%", player.getName());
-			player.sendMessage(MessageM.replaceAll(location.config.getFile().get(location.location).toString().replaceAll("%player%", player.getName()), vars));
+			player.sendMessage(MessageM.replaceAll(location.config.getFile().get(location.location).toString().replaceAll("%player%", player.getDisplayName()), vars));
 		}
 		// String message = location.config.getFile().get(location.location)
 		// .toString().replaceAll("%player%", "Console");
