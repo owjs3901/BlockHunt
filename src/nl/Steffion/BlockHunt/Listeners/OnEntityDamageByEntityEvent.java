@@ -76,7 +76,7 @@ public class OnEntityDamageByEntityEvent implements Listener {
 						} else {
 							// Seeker damaged by hider
 							if (!arena.hidersCanHurtSeekers) {
-								event.setCancelled(false);
+								event.setCancelled(true);
 								return;
 							}
 						}

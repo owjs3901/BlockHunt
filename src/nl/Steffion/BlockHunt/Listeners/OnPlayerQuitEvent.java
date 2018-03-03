@@ -15,17 +15,12 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class OnPlayerQuitEvent implements Listener {
-	
-	public ArrayList<String> leftPlayer = new ArrayList<String>();
-	public LocationSerializable spawnWarp;
-	
+
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerQuitEvent(PlayerQuitEvent event) {
 		Player playerLeaving = event.getPlayer();
 		for (Arena arena : W.arenaList) {
 			if (arena.playersInArena.contains(playerLeaving)) {
-				spawnWarp = arena.spawnWarp;
-				leftPlayer.add(playerLeaving.getUniqueId().toString());
 				ArenaHandler.playerLeaveArena(playerLeaving, true, true);
 			}
 		}
@@ -34,9 +29,6 @@ public class OnPlayerQuitEvent implements Listener {
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoinEvent(PlayerJoinEvent event) {
 		Player playerJoining = event.getPlayer();
-		if(leftPlayer.contains(playerJoining.getUniqueId().toString())) {
-			playerJoining.teleport(spawnWarp);
-			leftPlayer.remove(playerJoining.getUniqueId().toString());
-		}
+		playerJoining.teleport(playerJoining.getWorld().getSpawnLocation());
 	}
 }
