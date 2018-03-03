@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>nl.Steffion</groupId>
    <artifactId>BlockHunt</artifactId>
-   <version>0.2.1-SNAPSHOT</version>
+   <version>0.2.1</version>
    <name>BlockHunt</name>
   <properties>
     <plugin.version>${project.version}-${buildnumber}</plugin.version>
@@ -13,7 +13,7 @@
     <connection>scm:git:git@github.com:AddstarMC/Blockhunt.git</connection>
     <developerConnection>scm:git:git@github.com:AddstarMC/Blockhunt.git</developerConnection>
     <url>https://github.com/AddstarMC/Blockhunt</url>
-    <tag>master</tag>
+    <tag>BlockHunt-0.2.1</tag>
   </scm>
   <distributionManagement>
     <repository>
