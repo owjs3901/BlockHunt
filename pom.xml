@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>nl.Steffion</groupId>
    <artifactId>BlockHunt</artifactId>
-   <version>0.3.0-ALPHA</version>
+   <version>0.3.0-SNAPSHOT</version>
    <name>BlockHunt</name>
   <properties>
     <plugin.version>${project.version}-${buildnumber}</plugin.version>
@@ -70,6 +70,12 @@
       <artifactId>LibsDisguises</artifactId>
       <version>9.5.0</version>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>com.comphenix.protocol</groupId>
+          <artifactId>ProtocolLib</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 
