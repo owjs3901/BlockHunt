@@ -35,12 +35,12 @@ public class SolidBlockHandler {
 			if (!pl.equals(player)) {
 				if (MemoryStorage.hiddenLocWater.get(player) != null) {
 					if (MemoryStorage.hiddenLocWater.get(player)) {
-						pl.sendBlockChange(pBlock.getLocation(), Material.STATIONARY_WATER, (byte) 0);
+						pl.sendBlockChange(pBlock.getLocation(), Bukkit.createBlockData(Material.WATER));
 					} else {
-						pl.sendBlockChange(pBlock.getLocation(), Material.AIR, (byte) 0);
+						pl.sendBlockChange(pBlock.getLocation(), Bukkit.createBlockData(Material.AIR));
 					}
 				} else {
-					pl.sendBlockChange(pBlock.getLocation(), Material.AIR, (byte) 0);
+					pl.sendBlockChange(pBlock.getLocation(), Bukkit.createBlockData(Material.AIR));
 				}
 
 				MemoryStorage.hiddenLocWater.remove(player);
@@ -54,7 +54,7 @@ public class SolidBlockHandler {
 			playerShow.showPlayer(player);
 		}
 
-		MiscDisguise disguise = new MiscDisguise(DisguiseType.FALLING_BLOCK, block.getTypeId(), block.getDurability());
+		MiscDisguise disguise = new MiscDisguise(DisguiseType.FALLING_BLOCK, block.getType(), 0);
 		DisguiseAPI.disguiseToAll(player, disguise);
 
 		MessageManager.sendFMessage(player, ConfigC.normal_ingameNoMoreSolid);

@@ -30,7 +30,7 @@ public class CMDremove extends DefaultCMD {
 								Location signLoc = (Location) MemoryStorage.signs.getFile().get(sign + ".location");
 								signLoc.getBlock().setType(Material.AIR);
 								signLoc.getWorld().playEffect(signLoc, Effect.MOBSPAWNER_FLAMES, 0);
-								signLoc.getWorld().playSound(signLoc, Sound.ENTITY_ENDERDRAGON_FLAP, 1, 1);
+								signLoc.getWorld().playSound(signLoc, Sound.ENTITY_ENDER_DRAGON_FLAP, 1, 1);
 								MemoryStorage.signs.getFile().set(sign, null);
 							}
 						}

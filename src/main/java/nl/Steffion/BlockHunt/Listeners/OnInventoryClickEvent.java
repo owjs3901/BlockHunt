@@ -35,7 +35,7 @@ public class OnInventoryClickEvent implements Listener {
 			if (inv.getName().contains("DisguiseBlocks")) {
 				if (event.getCurrentItem() != null) {
 					if (!event.getCurrentItem().getType().isBlock()) {
-						if (!event.getCurrentItem().getType().equals(Material.FLOWER_POT_ITEM)) {
+						if (!event.getCurrentItem().getType().equals(Material.FLOWER_POT)) {
 							event.setCancelled(true);
 							MessageManager.sendFMessage(player, ConfigC.error_setNotABlock);
 						}
@@ -104,7 +104,7 @@ public class OnInventoryClickEvent implements Listener {
 				} else if (inv.getName().contains(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Name)))) {
 					event.setCancelled(true);
 					if (event.getCurrentItem().getType() != Material.AIR) {
-						if (event.getCurrentItem().getType().equals(Material.WOOL) && event.getCurrentItem().getDurability() == (short) 11) {
+						if (event.getCurrentItem().getType().equals(Material.BLUE_WOOL)) {
 							int i = 0;
 							for (Arena arena : MemoryStorage.arenaList) {
 								if (arena.playersInArena.contains(player)) {
@@ -135,7 +135,7 @@ public class OnInventoryClickEvent implements Listener {
 								}
 							}
 
-						} else if (event.getCurrentItem().getType().equals(Material.WOOL) && event.getCurrentItem().getDurability() == (short) 14) {
+						} else if (event.getCurrentItem().getType().equals(Material.RED_WOOL)) {
 							int i = 0;
 							for (Arena arena : MemoryStorage.arenaList) {
 								if (arena.playersInArena.contains(player)) {

@@ -63,7 +63,7 @@ public class OnPlayerInteractEvent implements Listener {
 
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if (event.getClickedBlock() != null) {
-				if (event.getClickedBlock().getType().equals(Material.SIGN_POST) || event.getClickedBlock().getType().equals(Material.WALL_SIGN)) {
+				if (event.getClickedBlock().getType().equals(Material.SIGN) || event.getClickedBlock().getType().equals(Material.WALL_SIGN)) {
 					if (SignsHandler.isSign(event.getClickedBlock().getLocation())) {
 						Sign sign = (Sign) event.getClickedBlock().getState();
 						if (sign.getLine(1) != null) {
@@ -92,7 +92,7 @@ public class OnPlayerInteractEvent implements Listener {
 
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_BLOCK) {
 			if (event.getClickedBlock().getType() != Material.AIR) {
-				if (event.getClickedBlock().getType().equals(Material.ENCHANTMENT_TABLE) || event.getClickedBlock().getType().equals(Material.WORKBENCH)
+				if (event.getClickedBlock().getType().equals(Material.ENCHANTING_TABLE) || event.getClickedBlock().getType().equals(Material.CRAFTING_TABLE)
 						|| event.getClickedBlock().getType().equals(Material.FURNACE) || event.getClickedBlock().getType().equals(Material.CHEST)
 						|| event.getClickedBlock().getType().equals(Material.ANVIL) || event.getClickedBlock().getType().equals(Material.ENDER_CHEST)
 						|| event.getClickedBlock().getType().equals(Material.JUKEBOX) || block.getRelative(event.getBlockFace()).getType().equals(Material.FIRE)) {
@@ -142,13 +142,13 @@ public class OnPlayerInteractEvent implements Listener {
 
 						if (item.getItemMeta().getDisplayName().equals(MessageManager.replaceAll((String) MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Name)))) {
 							Inventory BlockHuntPass = Bukkit.createInventory(null, 9, MessageManager.replaceAll("\u00A7r" + MemoryStorage.config.get(ConfigC.shop_BlockHuntPassv2Name)));
-							ItemStack BlockHuntPassSEEKER = new ItemStack(Material.WOOL, 1, (short) 11);
+							ItemStack BlockHuntPassSEEKER = new ItemStack(Material.BLUE_WOOL, 1);
 							ItemMeta BlockHuntPassIM = BlockHuntPassSEEKER.getItemMeta();
 							BlockHuntPassIM.setDisplayName(MessageManager.replaceAll("&eSEEKER"));
 							BlockHuntPassSEEKER.setItemMeta(BlockHuntPassIM);
 							BlockHuntPass.setItem(1, BlockHuntPassSEEKER);
 
-							ItemStack BlockHuntPassHIDER = new ItemStack(Material.WOOL, 1, (short) 14);
+							ItemStack BlockHuntPassHIDER = new ItemStack(Material.RED_WOOL, 1);
 							BlockHuntPassIM.setDisplayName(MessageManager.replaceAll("&eHIDER"));
 							BlockHuntPassHIDER.setItemMeta(BlockHuntPassIM);
 							BlockHuntPass.setItem(7, BlockHuntPassHIDER);

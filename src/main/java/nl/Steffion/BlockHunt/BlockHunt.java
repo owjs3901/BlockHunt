@@ -272,7 +272,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
                                     MemoryStorage.choosenBlock.remove(arenaPlayer);
                                 }
 
-                                MiscDisguise disguise = new MiscDisguise(DisguiseType.FALLING_BLOCK, block.getTypeId(), block.getDurability());
+                                MiscDisguise disguise = new MiscDisguise(DisguiseType.FALLING_BLOCK, block.getType(),0);
                                 DisguiseAPI.disguiseToAll(arenaPlayer, disguise);
 
                                 arenaPlayer.teleport(arena.hidersWarp);
@@ -325,7 +325,7 @@ public class BlockHunt extends JavaPlugin implements Listener {
                     arena.timer = arena.timer - 1;
                     if (arena.timer > 0) {
                         if (arena.timer == arena.gameTime - arena.timeUntilHidersSword) {
-                            ItemStack sword = new ItemStack(Material.WOOD_SWORD, 1);
+                            ItemStack sword = new ItemStack(Material.WOODEN_SWORD, 1);
                             sword.addUnsafeEnchantment(Enchantment.KNOCKBACK, 1);
                             for (Player arenaPlayer : arena.playersInArena) {
                                 if (!arena.seekers.contains(arenaPlayer)) {
@@ -401,8 +401,8 @@ public class BlockHunt extends JavaPlugin implements Listener {
                                     } else {
                                         Block pBlock = player.getLocation().getBlock();
                                         if (pBlock.getType().equals(Material.AIR) || pBlock.getType().equals(Material.WATER)
-                                                || pBlock.getType().equals(Material.STATIONARY_WATER)) {
-                                            if (pBlock.getType().equals(Material.WATER) || pBlock.getType().equals(Material.STATIONARY_WATER)) {
+                                                || pBlock.getType().equals(Material.WATER)) {
+                                            if (pBlock.getType().equals(Material.WATER) || pBlock.getType().equals(Material.WATER)) {
                                                 MemoryStorage.hiddenLocWater.put(player, true);
                                             } else {
                                                 MemoryStorage.hiddenLocWater.put(player, false);

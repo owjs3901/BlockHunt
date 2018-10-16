@@ -316,9 +316,9 @@ public class ArenaHandler {
 					if (MemoryStorage.hiddenLocWater.get(player) != null) {
 						Block pBlock = MemoryStorage.hiddenLoc.get(player).getBlock();
 						if (MemoryStorage.hiddenLocWater.get(player)) {
-							pl.sendBlockChange(pBlock.getLocation(), Material.STATIONARY_WATER, (byte) 0);
+							pl.sendBlockChange(pBlock.getLocation(), Bukkit.createBlockData(Material.WATER));
 						} else {
-							pl.sendBlockChange(pBlock.getLocation(), Material.AIR, (byte) 0);
+							pl.sendBlockChange(pBlock.getLocation(),Bukkit.createBlockData(Material.AIR));
 						}
 					}
 				}
