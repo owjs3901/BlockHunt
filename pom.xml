@@ -8,7 +8,8 @@
     <plugin.version>${project.version}-${buildnumber}</plugin.version>
     <buildnumber />
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <spigot.version>1.13.1-R0.1-SNAPSHOT</spigot.version>
+    <spigot.api.version>1.13</spigot.api.version>
+    <spigot.version>${spigot.api.version}.2-R0.1-SNAPSHOT</spigot.version>
   </properties>
   <scm>
     <connection>scm:git:git@github.com:AddstarMC/Blockhunt.git</connection>
@@ -72,7 +73,7 @@
     <dependency>
       <groupId>LibsDisguises</groupId>
       <artifactId>LibsDisguises</artifactId>
-      <version>9.6.0-SNAPSHOT</version>
+      <version>9.7.1-SNAPSHOT</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
