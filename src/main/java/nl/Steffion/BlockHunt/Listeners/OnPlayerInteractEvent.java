@@ -63,7 +63,14 @@ public class OnPlayerInteractEvent implements Listener {
 
 		if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if (event.getClickedBlock() != null) {
-				if (event.getClickedBlock().getType().equals(Material.SIGN) || event.getClickedBlock().getType().equals(Material.WALL_SIGN)) {
+				Material type = event.getClickedBlock().getType();
+				if (type.equals(Material.SPRUCE_SIGN) || type.equals(Material.SPRUCE_WALL_SIGN)||
+						type.equals(Material.ACACIA_SIGN) || type.equals(Material.ACACIA_WALL_SIGN)||
+						type.equals(Material.BIRCH_SIGN) || type.equals(Material.BIRCH_WALL_SIGN)||
+						type.equals(Material.DARK_OAK_SIGN) || type.equals(Material.DARK_OAK_WALL_SIGN)||
+						type.equals(Material.JUNGLE_SIGN) || type.equals(Material.JUNGLE_WALL_SIGN)||
+						type.equals(Material.OAK_SIGN) || type.equals(Material.OAK_WALL_SIGN)
+				) {
 					if (SignsHandler.isSign(event.getClickedBlock().getLocation())) {
 						Sign sign = (Sign) event.getClickedBlock().getState();
 						if (sign.getLine(1) != null) {

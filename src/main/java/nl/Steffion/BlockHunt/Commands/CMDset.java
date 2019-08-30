@@ -16,6 +16,7 @@ public class CMDset extends DefaultCMD {
 			if (args.length <= 1) {
 				MessageManager.sendFMessage(player, ConfigC.error_notEnoughArguments, "syntax-" + BlockHunt.CMDset.usage);
 			} else {
+
 				String arenaname = args[1];
 				InventoryHandler.openPanel(player, arenaname);
 			}

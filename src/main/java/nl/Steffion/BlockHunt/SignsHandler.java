@@ -1,13 +1,13 @@
 package nl.Steffion.BlockHunt;
 
-import java.util.ArrayList;
 import nl.Steffion.BlockHunt.Arena.ArenaState;
 import nl.Steffion.BlockHunt.Managers.MessageManager;
-
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.event.block.SignChangeEvent;
+
+import java.util.ArrayList;
 
 public class SignsHandler {
 
@@ -92,7 +92,15 @@ public class SignsHandler {
 		MemoryStorage.signs.load();
 		for (String sign : MemoryStorage.signs.getFile().getKeys(false)) {
 			Location loc = (Location) MemoryStorage.signs.getFile().get(sign + ".location");
-			if (loc.getBlock().getType().equals(Material.SIGN) || loc.getBlock().getType().equals(Material.WALL_SIGN)) {
+			Material type=Material.AIR;
+			if(loc.getBlock()!=null)
+			 	type= loc.getBlock().getType();
+			if (type.equals(Material.SPRUCE_SIGN) || type.equals(Material.SPRUCE_WALL_SIGN)||
+					type.equals(Material.ACACIA_SIGN) || type.equals(Material.ACACIA_WALL_SIGN)||
+					type.equals(Material.BIRCH_SIGN) || type.equals(Material.BIRCH_WALL_SIGN)||
+					type.equals(Material.DARK_OAK_SIGN) || type.equals(Material.DARK_OAK_WALL_SIGN)||
+					type.equals(Material.JUNGLE_SIGN) || type.equals(Material.JUNGLE_WALL_SIGN)||
+					type.equals(Material.OAK_SIGN) || type.equals(Material.OAK_WALL_SIGN)) {
 				Sign signblock = (Sign) loc.getBlock().getState();
 				String[] lines = signblock.getLines();
 				if (sign.contains("leave")) {

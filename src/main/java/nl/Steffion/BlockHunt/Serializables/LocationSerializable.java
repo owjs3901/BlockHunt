@@ -56,8 +56,8 @@ public class LocationSerializable extends Location {
 			MessageManager.sendMessage(null, "%EError deserializing Location - world not found! (%A%w%%E)", "w-" + w);
 			return null;
 		}
-		return new LocationSerializable(w, (Double) map.getOrDefault( "x", 0D), (Double) map.getOrDefault( "y", 0D), (Double) map.getOrDefault( "z", 0D), ((Double) map.getOrDefault( "a", 0D)).floatValue(),
-				((Double) map.getOrDefault( "p", 0D)).floatValue());
+		return new LocationSerializable(w, Double.parseDouble( map.getOrDefault( "x", 0D).toString()), Double.parseDouble(map.getOrDefault( "y", 0D).toString()), Double.parseDouble( map.getOrDefault( "z", 0D).toString()), Float.parseFloat( map.getOrDefault( "a", 0D).toString()),
+				Float.parseFloat(map.getOrDefault( "p", 0D).toString()));
 	}
 
 	public static Location getLocation(LocationSerializable ser){
