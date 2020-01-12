@@ -54,7 +54,7 @@ public class SolidBlockHandler {
 			playerShow.showPlayer(player);
 		}
 
-		MiscDisguise disguise = new MiscDisguise(DisguiseType.FALLING_BLOCK, block.getType(), 0);
+		MiscDisguise disguise = new MiscDisguise(DisguiseType.FALLING_BLOCK, block.getType().getId(), 0);
 		DisguiseAPI.disguiseToAll(player, disguise);
 
 		MessageManager.sendFMessage(player, ConfigC.normal_ingameNoMoreSolid);
